@@ -1,24 +1,17 @@
-
-# python -m PyAdverseSearch.test.test_minimax
-
+#python -m PyAdverseSearch.test.test_alphabeta
 
 from .state_tictactoe import generate_tictactoe_game
 from .state_connect4 import generate_connect4_game
-from PyAdverseSearch.classes.minimax import Minimax 
+from PyAdverseSearch.classes.alphabeta import AlphaBeta
 import time
 
-"""
-
-TIC TAC TOE
-
-"""
-def test_minimax_vs_human_tictactoe():
-    print("TESTING MINIMAX AGAINST HUMAN PLAYER (TIC TAC TOE)")
+def test_alphabeta_vs_human_tictactoe():
+    print("TESTING ALPHABETA WITH A HUMAN PLAYER AS MIN (TIC TAC TOE)")
     maxStarting = input("Would you like to start (y/n)? ")
     if maxStarting == 'y':
-        maxStarting = False
+        maxStarting = False 
     elif maxStarting == 'n':
-        maxStarting = True
+        maxStarting = True 
     else:
         print("Answer didn't match 'y' or 'n', program ended...")
         return
@@ -28,7 +21,7 @@ def test_minimax_vs_human_tictactoe():
     print("Initial Board :")
     state.display()
 
-    algorithm = Minimax(game=game, max_depth=9)
+    algorithm = AlphaBeta(game=game, max_depth=9)
 
     move_count = 10
     for i in range(move_count):
@@ -39,12 +32,11 @@ def test_minimax_vs_human_tictactoe():
             start = time.time()
             best_state = algorithm.choose_best_move(state)
             end = time.time()
-
             if best_state is None:
                 print("No move found (final state or a mistake...).")
                 break
 
-            print(f"AI played in {end - start:.3f} seconds.")
+            print("AI played in " + str(end - start) + "s.")
             best_state.display()
             state = best_state
         else:
@@ -53,7 +45,6 @@ def test_minimax_vs_human_tictactoe():
             for j in range(len(possible_moves)):
                 print(f"Option {j + 1}:")
                 possible_moves[j].display()
-
             while True:
                 user_input = input(f"Which one do you wish to do? (number between 1 and {len(possible_moves)}): ")
 
@@ -77,19 +68,19 @@ def test_minimax_vs_human_tictactoe():
                 print(f"Winner is: {winner}")
             break
 
-        
+
 """
 
 CONNECT 4
 
 """
-def test_minimax_vs_human_connect4() :
-    print("TESTING MINIMAX AGAINST HUMAN PLAYER (CONNECT 4)")
+def test_alphabeta_vs_human_connect4():
+    print("TESTING ALPHABETA AGAINST HUMAN PLAYER (CONNECT 4)")
     maxStarting = input("Would you like to start (y/n)? ")
     if maxStarting == 'y':
-        maxStarting = False  # Human plays first (MIN)
+        maxStarting = False
     elif maxStarting == 'n':
-        maxStarting = True   # AI plays first (MAX)
+        maxStarting = True 
     else:
         print("Answer didn't match 'y' or 'n', program ended...")
         return
@@ -99,7 +90,7 @@ def test_minimax_vs_human_connect4() :
     print("Initial Board :")
     state.display()
 
-    algorithm = Minimax(game=game, max_depth=7)
+    algorithm = AlphaBeta(game=game, max_depth=10)
 
     move_count = 43
     for i in range(move_count):
@@ -151,6 +142,6 @@ def test_minimax_vs_human_connect4() :
 
 if __name__ == "__main__":
     game = input("TicTacToe or Connect 4 ? (t or c) : ")
-    if game == "t" : test_minimax_vs_human_tictactoe()
-    elif game == "c" : test_minimax_vs_human_connect4()
+    if game == "t" : test_alphabeta_vs_human_tictactoe()
+    elif game == "c" : test_alphabeta_vs_human_connect4()
     else : print("No game choosen.")
