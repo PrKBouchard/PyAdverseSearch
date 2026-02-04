@@ -2,7 +2,7 @@
 
 from PyAdverseSearch.classes.node import Node
 from PyAdverseSearch.classes.minimax import Minimax
-from test.state_tictactoe import generate_tictactoe_game
+from .state_tictactoe import generate_tictactoe_game
 
 def test_next_move():
     print("🔵 TESTING next_move() FROM Minimax 🔵")

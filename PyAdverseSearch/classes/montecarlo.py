@@ -52,13 +52,30 @@ class MonteCarlo(SearchAlgorithm):
     def ucb1_select(self, node, stats):
         total_visits = sum(stats.get(child.id, (0, 1))[1] for child in node.children)
         log_total = math.log(total_visits + 1)
+        
         best_score = -float('inf')
         best_child = None
 
+        # Determine if the current node's player is MAX or MIN
+        is_max_turn = (node.player == "MAX")
+
         for child in node.children:
             wins, visits = stats.get(child.id, (0, 1))
-            win_rate = wins / visits
-            ucb1 = win_rate + math.sqrt(2 * log_total / visits)
+            
+            # Average score from MAX's perspective (-1 to 1)
+            avg_score = wins / visits
+            
+            # If it's MIN's turn, they want to minimize the score (make it negative).
+            # To use the standard UCB maximization formula, we can invert the score for MIN.
+            # If MIN is playing, a score of -1 (MIN win) is "good" (+1 for MIN).
+            
+            if is_max_turn:
+                exploitation = avg_score
+            else:
+                exploitation = -avg_score # Invert so that -1 becomes +1 (good for MIN)
+
+            # UCB1 formula
+            ucb1 = exploitation + math.sqrt(2 * log_total / visits)
 
             if ucb1 > best_score:
                 best_score = ucb1

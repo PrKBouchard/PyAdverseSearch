@@ -47,10 +47,16 @@ class Node:
 
     #calculate who's playing according to the node's depth and who played the first move
     def calculatePlayer(self):
+        # If the state already knows the player, use it.
+        # This is crucial for MCTS which might start a tree search from an intermediate state (depth=0 but not start of game).
+        if hasattr(self.state, 'player') and self.state.player is not None:
+            self.player = self.state.player
+            return
+
         isMaxStarting = self.state.game.isMaxStarting
-        if self.depth // 2 == 1 : #if depth odd
-            if isMaxStarting : self.player = "MAX"
-            else : self.player = "MIN"
-        else :
-            if isMaxStarting : self.player = "MIN"
-            else : self.player = "MAX"
+        # If depth is even (0, 2, 4...), it's the starting player's turn.
+        # If depth is odd (1, 3, 5...), it's the other player's turn.
+        if self.depth % 2 == 0:
+            self.player = "MAX" if isMaxStarting else "MIN"
+        else:
+            self.player = "MIN" if isMaxStarting else "MAX"
