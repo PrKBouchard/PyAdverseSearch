@@ -12,12 +12,13 @@ class NegamaxSolver:
 
 
     
-    def __init__(self, depth_limit=5):
+    def __init__(self, depth_limit=5, tracer=None):
         """
         Initialise le solveur avec une limite de profondeur de recherche.
         
         :param depth_limit: Profondeur maximale de l'arbre de recherche (nombre de demi-coups).
         """
+        self.tracer = tracer
         
         self.depth_limit = depth_limit
         self.transposition_table = {}
@@ -39,21 +40,38 @@ class NegamaxSolver:
         :return: La représentation du plateau (board) correspondant
                 au meilleur coup trouvé.
         """
-        best_value = -float('inf')
-        best_action = None
-        
+        if root_node.is_terminal():
+            raise ValueError("get_best_move appelé sur un état terminal.")
+
         current_color = 1 if root_node.state.player == 'MAX' else -1
-        
+                
         if not root_node.children:
             root_node._expand()
-            
-        for child in root_node.children:
-            value = -self._negamax(child, self.depth_limit - 1, -float('inf'), float('inf'), -current_color)
+        
+        if not root_node.children:
+            raise ValueError("Aucun coup légal depuis cet état.")
 
+        best_value = -float('inf')
+        best_action = None
+        best_child = None
+        
+        for child in root_node.children:
+            value = -self._negamax(
+                child,
+                self.depth_limit - 1,
+                -float('inf'),
+                float('inf'),
+                -current_color
+            )
+            
             if value > best_value:
                 best_value = value
-                best_action = child.state.board 
-        
+                best_action = child.state.board
+                best_child = child
+                
+        if self.tracer and best_child is not None:
+            self.tracer.report_best_move(id(best_child), best_value)
+
         return best_action
     
     
@@ -78,8 +96,6 @@ class NegamaxSolver:
         
         if hasattr(node.state, 'evaluate'):
             return color * node.state.evaluate()
-        if hasattr(node.state, '_evaluate'):
-            return color * node.state._evaluate()
         
         return 0
     
@@ -152,6 +168,8 @@ class NegamaxSolver:
         :param color: 1 pour MAX, -1 pour MIN.
         :return: Meilleure valeur trouvée pour ce nœud.
         """
+        if self.tracer: 
+            self.tracer.enter_node(node, alpha, beta, color)
         self.nodes_visited += 1
 
         state_hash = hash(node.state) if hasattr(node.state, '__hash__') else hash(str(node.state.board))
@@ -177,10 +195,14 @@ class NegamaxSolver:
             value = max(value, score)
             alpha = max(alpha, value)
             if alpha >= beta:
+                if self.tracer: 
+                    self.tracer.report_cutoff()
                 self.cutoffs += 1
                 break
 
         self.transposition_table[state_hash] = {'value': value, 'depth': depth}
+        if self.tracer: 
+            self.tracer.exit_node(value)
         return value
     
     
