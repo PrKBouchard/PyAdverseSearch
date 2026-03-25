@@ -155,84 +155,62 @@ def test_minimax_vs_human_connect4() :
 CHESS
 
 """
-
 def test_minimax_vs_human_chess():
     print("TESTING MINIMAX AGAINST HUMAN PLAYER (CHESS)")
     maxStarting = input("Would you like to start (y/n)? ")
     if maxStarting == 'y':
         maxStarting = False
+        player_color = "WHITE"
     elif maxStarting == 'n':
         maxStarting = True
+        player_color = "BLACK"
     else:
         print("Answer didn't match 'y' or 'n', program ended...")
         return
+    
     game = generate_chess_game(maxStarting)
     state = game.state
     print("Initial Board :")
     state.display()
+    algorithm = Minimax(game=game, max_depth=3)
 
-    for i in range(20):
-        user_input = input(f"Which move do you wish to do? (in format 'e2e4' to move piece from e2 to e4): ")
+    while(True):
+        if player_color == state.board.player:
+            user_input = input(f"Which move do you wish to do? (in format 'e2e4' to move piece from e2 to e4): ")
+            try:
+                user_state = state.user_move(user_input)
+                user_state.display()
+                state = user_state
+            except ValueError as error:
+                print(str(error))
+            
+        else:
+            print("AI turn ---")
+            start = time.time()
+            best_state = algorithm.choose_best_move(state)
+            end = time.time()
 
-        try:
-            if 4 == len(user_input):
-                from_coord = user_input[0:2]
-                to_coord = user_input[2:4]
-                state.board.move_piece(from_coord, to_coord)
-                state.display()
-            elif 5 == len(user_input):
-                from_coord = user_input[0:2]
-                to_coord = user_input[2:4]
-                promotion_piece = user_input[4]
-                state.board.promote_pawn(from_coord, to_coord, promotion_piece)
-                state.display()
+            if best_state is None:
+                print("No move found (final state or a mistake...).")
+                break
+
+            print(f"AI played in {end - start:.3f} seconds.")
+            best_state.display()
+            state = best_state
+
+        if state._is_terminal():
+            print("Final state reached.")
+            winner = game.winner_function(state)
+            if not winner:
+                print("It's a draw!")
             else:
-                #print(f"Invalid input! Please enter a number between 1 and {len(possible_moves)}.") 
-                print(str(user_input) + " : incorrect move or let king in check")
-        except ValueError as error:
-            print(str(error))
-        
-
-def test_minimax_vs_human_chessIA():
-    print("TESTING MINIMAX AGAINST HUMAN PLAYER (CHESS)")
-    maxStarting = input("Would you like to start (y/n)? ")
-    if maxStarting == 'y':
-        maxStarting = False
-    elif maxStarting == 'n':
-        maxStarting = True
-    else:
-        print("Answer didn't match 'y' or 'n', program ended...")
-        return
-    game = generate_chess_game(maxStarting)
-    state = game.state
-    print("Initial Board :")
-    state.display()
-
-    for i in range(20):
-        user_input = input(f"Which move do you wish to do? (in format 'e2e4' to move piece from e2 to e4): ")
-
-        try:
-            if 4 == len(user_input):
-                from_coord = user_input[0:2]
-                to_coord = user_input[2:4]
-                state.board.move_piece(from_coord, to_coord)
-                state.display()
-            elif 5 == len(user_input):
-                from_coord = user_input[0:2]
-                to_coord = user_input[2:4]
-                promotion_piece = user_input[4]
-                state.board.promote_pawn(from_coord, to_coord, promotion_piece)
-                state.display()
-            else:
-                #print(f"Invalid input! Please enter a number between 1 and {len(possible_moves)}.") 
-                print(str(user_input) + " : incorrect move or let king in check")
-        except ValueError as error:
-            print(str(error))
+                print(f"Winner is: {winner}")
+            break
 
 
 if __name__ == "__main__":
-    game = input("TicTacToe or Connect 4 or Chess ? (t or c or C) : ")
+    game = input("TicTacToe or Connect 4 or Chess ? (t or c or ch) : ")
     if game == "t" : test_minimax_vs_human_tictactoe()
     elif game == "c" : test_minimax_vs_human_connect4()
-    elif game == "C" : test_minimax_vs_human_chess()
+    elif game == "ch" : test_minimax_vs_human_chess()
     else : print("No game chosen.")

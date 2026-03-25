@@ -57,8 +57,8 @@ class Piece:
                 else:
                     break
                 j=j+1
-        #print(possible_moves)
         return possible_moves
+    
     
     def bishop_possible_moves(self, from_pos_index ,board):
         possible_moves = []
@@ -78,8 +78,8 @@ class Piece:
                 else:
                     break
                 j=j+1
-        #print(possible_moves)
         return possible_moves
+    
     
     def knight_possible_moves(self, from_pos_index ,board):
         possible_moves = []
@@ -91,8 +91,8 @@ class Piece:
                     possible_moves.append(to_pos_tab120)
                 elif board.cases[to_pos_tab120].color != self.color:
                     possible_moves.append(to_pos_tab120)
-        #print(possible_moves)
         return possible_moves
+    
     
     def queen_possible_moves(self, from_pos_index ,board):
         possible_moves = []
@@ -112,8 +112,8 @@ class Piece:
                 else:
                     break
                 j=j+1
-        #print(possible_moves)
         return possible_moves
+    
     
     def king_possible_moves(self, from_pos_index ,board):
         possible_moves = []
@@ -125,30 +125,30 @@ class Piece:
                     possible_moves.append(to_pos_tab120)
                 elif board.cases[to_pos_tab120].color != self.color:
                     possible_moves.append(to_pos_tab120)
-        #print(possible_moves)
         return possible_moves
+    
     
     def king_possible_castling_moves(self, from_pos_index ,board):
         possible_moves = []
         
-        if (from_pos_index == 60): # e1
-            if board.white_can_castle_56 and board.cases[tab120[tab64[from_pos_index] - 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 3]].name == ' ':
+        if (self.color == 'WHITE'): # e1
+            if board.white_can_castle_56 and board.cases[tab120[tab64[from_pos_index] - 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 3]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 4]].name == 'R':
                 possible_moves.append(58) # c1
-            if board.white_can_castle_63 and board.cases[tab120[tab64[from_pos_index] + 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 2]].name == ' ':
+            if board.white_can_castle_63 and board.cases[tab120[tab64[from_pos_index] + 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 3]].name == 'R':
                 possible_moves.append(62) # g1
     
-        elif (from_pos_index == 4): # e8
-            if board.black_can_castle_0 and board.cases[tab120[tab64[from_pos_index] - 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 3]].name == ' ':
+        elif (self.color == 'BLACK'): # e8
+            if board.black_can_castle_0 and board.cases[tab120[tab64[from_pos_index] - 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 3]].name == ' ' and board.cases[tab120[tab64[from_pos_index] - 4]].name == 'R':
                 possible_moves.append(2) # c8
-            if board.black_can_castle_7 and board.cases[tab120[tab64[from_pos_index] + 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 2]].name == ' ':
+            if board.black_can_castle_7 and board.cases[tab120[tab64[from_pos_index] + 1]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 2]].name == ' ' and board.cases[tab120[tab64[from_pos_index] + 3]].name == 'R':
                 possible_moves.append(6) # g8
-        #print(possible_moves)
         return possible_moves
     
+
     def pawn_possible_moves(self, from_pos_index ,board):
         possible_moves = []
+        # Move forward
         if self.color == 'WHITE':
-            # Move forward
             to_pos_tab120 = tab120[tab64[from_pos_index] - 10]
             if to_pos_tab120 != -1 and board.cases[to_pos_tab120].name == ' ':
                 if to_pos_tab120 >=7:
@@ -158,13 +158,12 @@ class Piece:
                     to_pos_tab120_double = tab120[tab64[from_pos_index] - 20]
                     if to_pos_tab120_double != -1 and board.cases[to_pos_tab120_double].name == ' ':
                         possible_moves.append(to_pos_tab120_double)
-            # Captures
             for capture in [-9, -11]:
                 to_pos_tab120 = tab120[tab64[from_pos_index] + capture]
                 if to_pos_tab120 != -1 and board.cases[to_pos_tab120].color == 'BLACK':
                     if to_pos_tab120 >=7:
                         possible_moves.append(to_pos_tab120)
-        else:  # BLACK
+        else:  
             # Move forward
             to_pos_tab120 = tab120[tab64[from_pos_index] + 10]
             if to_pos_tab120 != -1 and board.cases[to_pos_tab120].name == ' ':
@@ -174,13 +173,13 @@ class Piece:
                     to_pos_tab120_double = tab120[tab64[from_pos_index] + 20]
                     if to_pos_tab120_double != -1 and board.cases[to_pos_tab120_double].name == ' ':
                         possible_moves.append(to_pos_tab120_double)
-            # Captures
             for capture in [9, 11]:
                 to_pos_tab120 = tab120[tab64[from_pos_index] + capture]
                 if to_pos_tab120 != -1 and board.cases[to_pos_tab120].color == 'WHITE':
                     possible_moves.append(to_pos_tab120)
-        #print(possible_moves)
+        
         return possible_moves
+    
     
     def pawn_possible_promotions(self, from_pos_index ,board):
         possible_moves = []
@@ -195,7 +194,6 @@ class Piece:
                 if to_pos_tab120 != -1 and board.cases[to_pos_tab120].color == 'BLACK' and to_pos_tab120 < 8:
                     possible_moves.append(to_pos_tab120)
         else:  # BLACK
-            
             to_pos_tab120 = tab120[tab64[from_pos_index] + 10]
             if to_pos_tab120 != -1 and board.cases[to_pos_tab120].name == ' ' and to_pos_tab120 >= 56:
                 possible_moves.append(to_pos_tab120)
@@ -204,7 +202,6 @@ class Piece:
                 to_pos_tab120 = tab120[tab64[from_pos_index] + capture]
                 if to_pos_tab120 != -1 and board.cases[to_pos_tab120].color == 'WHITE' and to_pos_tab120 >= 56:
                     possible_moves.append(to_pos_tab120)
-        #print(possible_moves)
         return possible_moves
        
             
