@@ -38,17 +38,20 @@ class ChessState(State):
         action_from, action_to, type = action
         new_board = self.board.clone() 
         if type=='CASTLE':
-            new_board.apply_castling_move(action_from, action_to)
+            new_board.do_castling_move(action_from, action_to)
         elif type in ['Q', 'R', 'B', 'N']:
-            new_board.apply_pawn_promotion(action_from, action_to, type)
+            new_board.do_pawn_promotion(action_from, action_to, type)
         else:
-            new_board.apply_move(action_from, action_to)
+            new_board.do_move(action_from, action_to)
         new_board.player = 'BLACK' if self.board.player == 'WHITE' else 'WHITE'
         next_player = 'MIN' if self.player == 'MAX' else 'MAX'
 
         return ChessState(board=new_board, parent=self, game=self.game, player=next_player)
     
     def user_move(self, user_input):
+        if (user_input == 'f'):
+            self.board.undo_move()
+            return ChessState(board=self.board, parent=self, game=self.game, player=self.player)
         action_from = user_input[0:2]
         action_to = user_input[2:4]
         type = user_input[4] if len(user_input) == 5 else ''
@@ -61,11 +64,11 @@ class ChessState(State):
             raise ValueError(str(user_input) + " : incorrect move or let king in check")
         if (action_from, action_to, type) in all_possible_moves:
             if type in ['Q', 'R', 'B', 'N']:
-                new_board.apply_pawn_promotion(action_from, action_to, type)
+                new_board.do_pawn_promotion(action_from, action_to, type)
             else:
-                new_board.apply_move(action_from, action_to)
+                new_board.do_move(action_from, action_to)
         elif (action_from, action_to, 'CASTLE') in all_possible_moves:
-            new_board.apply_castling_move(action_from, action_to)
+            new_board.do_castling_move(action_from, action_to)
         else:             
             raise ValueError(str(user_input) + " : incorrect move or let king in check")
 

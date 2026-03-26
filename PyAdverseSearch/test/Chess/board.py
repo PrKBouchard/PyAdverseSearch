@@ -35,6 +35,7 @@ class Board:
             self.cases = cases
         
         self.player = player
+        self.history = []
         self.white_can_castle_56=True
         self.white_can_castle_63=True
         self.black_can_castle_0=True
@@ -91,16 +92,17 @@ class Board:
         if not DontCheck:
             in_check_move=[] 
             for move in all_possible_moves:
-                new_board = self.clone()
+                #new_board = self.clone()
                 action_from, action_to, type = move
                 if type=='CASTLE':
-                    new_board.apply_castling_move(action_from, action_to)
+                    self.do_castling_move(action_from, action_to)
                 elif type in ['Q', 'R', 'B', 'N']:
-                    new_board.apply_pawn_promotion(action_from, action_to, type)
+                    self.do_pawn_promotion(action_from, action_to, type)
                 else:
-                    new_board.apply_move(action_from, action_to)
-                if new_board.is_in_check(color):
+                    self.do_move(action_from, action_to)
+                if self.is_in_check(color):
                     in_check_move.append(move)
+                self.undo_move()
 
             for move in in_check_move:
                 all_possible_moves.remove(move)
@@ -108,19 +110,47 @@ class Board:
         return all_possible_moves
         
 
-    def apply_move(self, from_pos, to_pos):
+    def do_move(self, from_pos, to_pos):
         """
         Applies a move from from_pos to to_pos.
 
         :param from_pos: The position of the piece to move.
         :param to_pos: The position where the piece is being moved.
         """
+        self.log_move(from_pos, to_pos)
         piece = self.cases[coord.index(from_pos)]
         self.cases[coord.index(to_pos)] = piece
         self.cases[coord.index(from_pos)] = Piece(' ','NONE')
 
+    def undo_move(self):
+        if not self.history:
+            print("No moves to undo.")
+            return
+        
+        last_move = self.history.pop()
+        if last_move[8]:  # If it was a castling move
+            from_pos, to_pos, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, rook_from_pos, rook_to_pos, _ = last_move
+            #print(f"Undoing castling move from {from_pos} to {to_pos}")
+            self.cases[coord.index(from_pos)] = self.cases[coord.index(to_pos)]
+            self.cases[coord.index(to_pos)] = Piece(' ','NONE')
+            self.cases[coord.index(rook_from_pos)] = self.cases[coord.index(rook_to_pos)]
+            self.cases[coord.index(rook_to_pos)] = Piece(' ','NONE')
+            self.white_can_castle_56 = white_can_castle_56
+            self.white_can_castle_63 = white_can_castle_63
+            self.black_can_castle_0 = black_can_castle_0
+            self.black_can_castle_7 = black_can_castle_7
+        else:
+            from_pos, to_pos, piece_from, piece_to, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, _ = last_move
+            #print(f"Undoing move from {from_pos} to {to_pos}")
+            self.cases[coord.index(from_pos)] = piece_from
+            self.cases[coord.index(to_pos)] = piece_to
+            self.white_can_castle_56 = white_can_castle_56
+            self.white_can_castle_63 = white_can_castle_63
+            self.black_can_castle_0 = black_can_castle_0
+            self.black_can_castle_7 = black_can_castle_7
 
-    def apply_pawn_promotion(self, from_pos, to_pos, promotion_piece):
+
+    def do_pawn_promotion(self, from_pos, to_pos, promotion_piece):
         """
         Applies a pawn promotion move.
 
@@ -128,18 +158,20 @@ class Board:
         :param to_pos: The position where the pawn is being promoted.
         :param promotion_piece: The piece to promote to (e.g., 'Q' for queen).
         """
+        self.log_move(from_pos, to_pos)
         piece = self.cases[coord.index(from_pos)]
         self.cases[coord.index(to_pos)] = Piece(promotion_piece, piece.color)
         self.cases[coord.index(from_pos)] = Piece(' ','NONE')
         
 
-    def apply_castling_move(self,from_pos, to_pos):
+    def do_castling_move(self,from_pos, to_pos):
         """
         Applies a castling move between the king and rook.
 
         :param from_pos: The position of the king to move.
         :param to_pos: The position where the king is being moved for castling.
         """
+        self.log_move(from_pos, to_pos, True)
         from_pos_index = coord.index(from_pos)
         to_pos_index = coord.index(to_pos)
         
@@ -206,5 +238,25 @@ class Board:
         if len(moves) == 0 and self.is_in_check(color):
             return True
         return False
+    
+
+    def log_move(self, from_pos, to_pos, is_castling=False):
+        #print(f"Move from {from_pos} to {to_pos}")
+        if is_castling:
+            if from_pos == 'e1' and to_pos == 'c1':
+                move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'a1', 'd1', True]
+            elif from_pos == 'e1' and to_pos == 'g1':
+                move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'h1', 'f1', True]
+            elif from_pos == 'e8' and to_pos == 'c8':
+                move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'a8', 'd8', True]
+            elif from_pos == 'e8' and to_pos == 'g8':
+                move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'h8', 'f8', True]
+        else:
+            piece_from = self.get_piece_at(from_pos)
+            piece_to = self.get_piece_at(to_pos)
+            move = [from_pos, to_pos, piece_from, piece_to, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, False]
+            self.history.append(move)
+
+    
     
     
