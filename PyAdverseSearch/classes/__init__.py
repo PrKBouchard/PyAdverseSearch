@@ -7,3 +7,4 @@ from .algorithm import SearchAlgorithm
 from .montecarlo import MonteCarlo
 from .negamax import NegamaxSolver
 from .pnsearch import PNSearch, PNNode, ProofStatus
+from .test_game_implementation import GameTester

@@ -190,35 +190,20 @@ class PNSearch(SearchAlgorithm):
         """
         utility = self.game.game_utility(node.state)
 
-        # Convention : utilité positive = victoire pour MAX, négative = victoire pour MIN
-        # utility == 1 : victoire MAX, -1 : victoire MIN, 0 : match nul
 
-        if node.is_or_node:  # Nœud MAX (OR)
-            if utility > 0:  # MAX gagne
-                node.proof_status = ProofStatus.PROVEN
-                node.phi = 0
-                node.delta = self.INFINITY
-            elif utility < 0:  # MAX perd
-                node.proof_status = ProofStatus.DISPROVEN
-                node.phi = self.INFINITY
-                node.delta = 0
-            else:  # Match nul
-                node.proof_status = ProofStatus.DISPROVEN
-                node.phi = self.INFINITY
-                node.delta = 0
-        else:  # Nœud MIN (AND)
-            if utility < 0:  # MIN gagne (donc MAX perd)
-                node.proof_status = ProofStatus.PROVEN
-                node.phi = 0
-                node.delta = self.INFINITY
-            elif utility > 0:  # MIN perd (donc MAX gagne)
-                node.proof_status = ProofStatus.DISPROVEN
-                node.phi = self.INFINITY
-                node.delta = 0
-            else:  # Match nul
-                node.proof_status = ProofStatus.DISPROVEN
-                node.phi = self.INFINITY
-                node.delta = 0
+        
+        if utility > 0:  # Victoire pour MAX
+            node.proof_status = ProofStatus.PROVEN
+            node.phi = 0
+            node.delta = self.INFINITY
+        elif utility < 0:  # Victoire pour MIN
+            node.proof_status = ProofStatus.DISPROVEN
+            node.phi = self.INFINITY
+            node.delta = 0
+        else:  # Match nul
+            node.proof_status = ProofStatus.DISPROVEN
+            node.phi = self.INFINITY
+            node.delta = 0
 
     def select_most_proving_node(self, root):
         """
@@ -229,6 +214,9 @@ class PNSearch(SearchAlgorithm):
         :return: Nœud le plus prometteur (feuille non développée)
         """
         current = root
+        
+        # Le chemin actuel ne concerne que la descente courante
+        self.current_path.clear()
 
         # Descente dans l'arbre jusqu'à une feuille non développée
         while current.expanded and not current.is_solved():
@@ -249,10 +237,6 @@ class PNSearch(SearchAlgorithm):
                 best_child = min(current.children, key=lambda c: c.delta)
 
             current = best_child
-
-        # Nettoyage du chemin après sélection
-        state_hash = self._hash_state(current.state)
-        self.current_path.discard(state_hash)
 
         return current if not current.is_solved() else None
 
