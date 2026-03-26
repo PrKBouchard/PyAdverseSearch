@@ -2,6 +2,7 @@
 
 from .state_tictactoe import generate_tictactoe_game
 from .state_connect4 import generate_connect4_game
+from .Chess.state_chess import generate_chess_game
 from PyAdverseSearch.classes.alphabeta import AlphaBeta
 import time
 
@@ -140,8 +141,71 @@ def test_alphabeta_vs_human_connect4():
             break
 
 
+
+"""
+
+CHESS
+
+"""
+def test_alphabeta_vs_human_chess():
+    print("TESTING ALPHABETA AGAINST HUMAN PLAYER (CHESS)")
+    maxStarting = input("Would you like to start (y/n)? ")
+    if maxStarting == 'y':
+        maxStarting = False
+        player_color = "WHITE"
+    elif maxStarting == 'n':
+        maxStarting = True
+        player_color = "BLACK"
+    else:
+        print("Answer didn't match 'y' or 'n', program ended...")
+        return
+    
+    game = generate_chess_game(maxStarting)
+    state = game.state
+    print("Initial Board :")
+    state.display()
+
+    algorithm = AlphaBeta(game=game, max_depth=3)
+
+    while(True):
+        if player_color == state.board.player:
+            user_input = input(f"Which move do you wish to do? (in format 'e2e4' to move piece from e2 to e4): ")
+
+            try:
+                user_state = state.user_move(user_input)
+                user_state.display()
+                state = user_state
+            except ValueError as error:
+                print(str(error))
+            
+        else:
+            print("AI turn ---")
+            start = time.time()
+            best_state = algorithm.choose_best_move(state)
+            end = time.time()
+
+            if best_state is None:
+                print("No move found (final state or a mistake...).")
+                break
+
+            print(f"AI played in {end - start:.3f} seconds.")
+            stat = algorithm.get_statistics()
+            print(f"Nodes explored: {stat['nodes_explored']}, Cutoffs: {stat['cutoffs']}")
+            best_state.display()
+            state = best_state
+
+        if state._is_terminal():
+            print("Final state reached.")
+            winner = game.winner_function(state)
+            if not winner:
+                print("It's a draw!")
+            else:
+                print(f"Winner is: {winner}")
+            break
+
 if __name__ == "__main__":
-    game = input("TicTacToe or Connect 4 ? (t or c) : ")
+    game = input("TicTacToe or Connect 4 or Chess ? (t or c or ch) : ")
     if game == "t" : test_alphabeta_vs_human_tictactoe()
     elif game == "c" : test_alphabeta_vs_human_connect4()
+    elif game == "ch" : test_alphabeta_vs_human_chess()
     else : print("No game choosen.")

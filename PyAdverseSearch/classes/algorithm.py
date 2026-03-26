@@ -23,13 +23,21 @@ def choose_best_move(algo_name, game, state, **kwargs):
     if algo_name == 'minimax':
         from .minimax import Minimax
         AlgoClass = Minimax
-    # ajout des futurs algorithmes ICI
+    elif algo_name == 'alphabeta':
+        from .alphabeta import AlphaBeta
+        AlgoClass = AlphaBeta
+    elif algo_name == 'mtdf':
+        from .mtdf import MTDf
+        AlgoClass = MTDf
     elif algo_name == 'montecarlo':
         from .montecarlo import MonteCarlo
         AlgoClass = MonteCarlo
     elif algo_name == 'pnsearch':
         from .pnsearch import PNSearch
         AlgoClass = PNSearch
+    elif algo_name == 'negamax':
+        from .negamax import NegamaxSolver
+        AlgoClass = NegamaxSolver
     else:
         raise ValueError(f"Algorithme inconnu : {algo_name}")
 

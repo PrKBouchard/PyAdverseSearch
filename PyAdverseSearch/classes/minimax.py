@@ -1,3 +1,11 @@
+"""
+Module minimax
+==============
+
+Ce module implémente l'algorithme Minimax classique avec limite de profondeur
+et limite de temps optionnelle.
+"""
+
 # FILE: PyAdverseSearch/classes/minimax.py
 
 import time
@@ -5,6 +13,28 @@ from PyAdverseSearch.classes.algorithm import SearchAlgorithm
 from PyAdverseSearch.classes.node import Node
 
 class Minimax(SearchAlgorithm):
+    """
+    Implémentation de l'algorithme Minimax classique.
+
+    Minimax explore récursivement l'arbre de jeu en alternant entre
+    la maximisation du gain (joueur MAX) et la minimisation (joueur MIN).
+    Il garantit le choix optimal si la recherche est exhaustive.
+
+    :param game: Instance du jeu configuré.
+    :type game: Game or None
+    :param max_depth: Profondeur maximale de recherche (couper l'exploration à cette profondeur).
+    :type max_depth: int
+    :param max_time_seconds: Limite de temps en secondes (``None`` = pas de limite).
+    :type max_time_seconds: float or None
+
+    Complexité temporelle : O(b^d) avec b le facteur de branchement et d la profondeur.
+
+    Exemple::
+
+        algo = Minimax(game=my_game, max_depth=5)
+        best_state = algo.choose_best_move(current_state)
+    """
+
     def __init__(self, game=None, max_depth=9, max_time_seconds=None):
         #verifying parameters
         if max_depth is not None and (max_depth <= 0 or not isinstance(max_depth, int)):
@@ -22,10 +52,16 @@ class Minimax(SearchAlgorithm):
 
     def choose_best_move(self, state):
         """
-        Selects the best move for the current player (MAX or MIN),
-        prioritizing terminal states (utility × 1000), then calling
-        min_value or max_value depending on the player, and comparing scores.
+        Sélectionne le meilleur coup pour le joueur courant (MAX ou MIN).
 
+        Les états terminaux recoivent un bonus de priorité (utilité x 1000)
+        pour favoriser les victoires immédiates. Pour les états non-terminaux,
+        appelle récursivement :meth:`min_value` ou :meth:`max_value`.
+
+        :param state: État courant du jeu.
+        :type state: State
+        :return: L'état enfant correspondant au meilleur coup.
+        :rtype: State or None
         """
         is_max = (state.player == "MAX")
 
@@ -56,7 +92,14 @@ class Minimax(SearchAlgorithm):
 
     def max_value(self, state, depth):
         """
-        Returns the highest value (utility or heuristic) for MAX.
+        Retourne la valeur maximale (utilité ou heuristique) pour le joueur MAX.
+
+        :param state: État courant.
+        :type state: State
+        :param depth: Profondeur restante.
+        :type depth: int
+        :return: Valeur maximale trouvée.
+        :rtype: float
         """
         # final state
         if self.game.game_is_terminal(state):
@@ -73,7 +116,14 @@ class Minimax(SearchAlgorithm):
 
     def min_value(self, state, depth):
         """
-        Returns the smallest value (utility or heuristic) for MIN.
+        Retourne la valeur minimale (utilité ou heuristique) pour le joueur MIN.
+
+        :param state: État courant.
+        :type state: State
+        :param depth: Profondeur restante.
+        :type depth: int
+        :return: Valeur minimale trouvée.
+        :rtype: float
         """
         # Terminal state
         if self.game.game_is_terminal(state):
@@ -90,6 +140,12 @@ class Minimax(SearchAlgorithm):
 
 
     def time_limit_reached(self):
+        """
+        Vérifie si la limite de temps de calcul est atteinte.
+
+        :return: ``True`` si le temps alloué est dépassé, ``False`` sinon.
+        :rtype: bool
+        """
         if self.max_time is None:
             return False
         return (time.time() - self.start_time) >= self.max_time
@@ -97,6 +153,17 @@ class Minimax(SearchAlgorithm):
     # If the node is terminal, it directly returns its utility value.
     # Otherwise, it recursively calculates utilities of all children.
     def default_utility(self, node):
+        """
+        Calcule récursivement la valeur d'utilité d'un noeud à partir de ses enfants.
+
+        Si le noeud est terminal, retourne directement son utilité.
+        Sinon, applique MAX ou MIN selon le joueur actif.
+
+        :param node: Noeud à évaluer.
+        :type node: Node
+        :return: Valeur d'utilité calculée.
+        :rtype: float
+        """
         if node.is_terminal():
             return node.state._utility()
 
@@ -111,6 +178,17 @@ class Minimax(SearchAlgorithm):
 
 
     def next_move(self, node):
+        """
+        Retourne le noeud enfant correspondant au meilleur coup depuis un noeud donné.
+
+        Évalue chaque enfant avec :meth:`default_utility` et sélectionne
+        le meilleur selon la perspective du joueur actif.
+
+        :param node: Noeud courant (avec enfants développés).
+        :type node: Node
+        :return: Noeud enfant optimal, ou ``None`` si aucun enfant.
+        :rtype: Node or None
+        """
         if not node.children:
             return None
 
