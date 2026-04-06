@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025-2026, Equipe PyAdverseSearch
+# This file is distributed under the same license as the PyAdverseSearch
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PyAdverseSearch 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-06 13:04-0400\n"
+"PO-Revision-Date: 2026-04-06 20:09+0000\n"
+"Last-Translator: Benjamin + Copilot\n"
+"Language-Team: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../index.rst:13
+msgid "Architecture principale"
+msgstr "Core architecture"
+
+#: ../../index.rst:19
+msgid "Interfaces graphiques"
+msgstr "Graphical interfaces"
+
+#: ../../index.rst:25
+msgid "A propos"
+msgstr "About"
+
+#: ../../index.rst:5
+msgid "PyAdverseSearch - Documentation"
+msgstr "PyAdverseSearch - Documentation"
+
+#: ../../index.rst:7
+msgid ""
+"**PyAdverseSearch** est une bibliothèque Python modulaire dédiée aux "
+"algorithmes d'exploration adverse dans les jeux à deux joueurs à somme "
+"nulle."
+msgstr ""
+"**PyAdverseSearch** is a modular Python library dedicated to adversarial "
+"search algorithms for two-player zero-sum games."
+
+#: ../../index.rst:10
+msgid ""
+"Elle fournit une infrastructure complète : classes abstraites, algorithmes "
+"de recherche, interfaces graphiques et outils de rapport, le tout conçu pour"
+" être facilement extensible."
+msgstr ""
+"It provides a complete infrastructure: abstract classes, search algorithms, "
+"graphical interfaces, and reporting tools, all designed to be easily "
+"extensible."
+
+#: ../../index.rst:32
+msgid "Démarrage rapide"
+msgstr "Quick start"
+
+#: ../../index.rst:34
+msgid "Installation ::"
+msgstr "Installation ::"
+
+#: ../../index.rst:40
+msgid "Exemple minimal::"
+msgstr "Minimal example::"
+
+#: ../../index.rst:58
+msgid "Index et recherche"
+msgstr "Index and search"
+
+#: ../../index.rst:60
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
+
+#: ../../index.rst:61
+msgid ":ref:`modindex`"
+msgstr ":ref:`modindex`"
+
+#: ../../index.rst:62
+msgid ":ref:`search`"
+msgstr ":ref:`search`"

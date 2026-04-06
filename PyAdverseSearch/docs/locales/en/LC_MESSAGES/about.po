@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025-2026, Equipe PyAdverseSearch
+# This file is distributed under the same license as the PyAdverseSearch
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PyAdverseSearch 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-06 13:04-0400\n"
+"PO-Revision-Date: 2026-04-06 20:09+0000\n"
+"Last-Translator: Benjamin + Copilot\n"
+"Language-Team: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../about.rst:4
+msgid "A propos du projet"
+msgstr "About the project"
+
+#: ../../about.rst:7
+msgid "Auteurs"
+msgstr "Authors"
+
+#: ../../about.rst:9
+msgid "**Promotion 2025**"
+msgstr "**Class of 2025**"
+
+#: ../../about.rst:11
+msgid ""
+"Anaïs Dariane Nikiema, Martin Queval, Thibault Stouls, Hugo Vicente, "
+"Benjamin Bouquet, Ewan Burasovitch, Mathys Lohézic, Axel Ozange, Mélissa "
+"Djenadi."
+msgstr ""
+"Anais Dariane Nikiema, Martin Queval, Thibault Stouls, Hugo Vicente, "
+"Benjamin Bouquet, Ewan Burasovitch, Mathys Lohezic, Axel Ozange, Melissa "
+"Djenadi."
+
+#: ../../about.rst:14
+msgid "**Promotion 2026**"
+msgstr "**Class of 2026**"
+
+#: ../../about.rst:16
+msgid ""
+"James Genitrini, Lucas Hätet, Clément Hubert, Lucas Lablanche, Quentin "
+"Laparre, Benjamin Lecomte, Halim Luquet, Ilyes Zaidi."
+msgstr ""
+"James Genitrini, Lucas Hatet, Clement Hubert, Lucas Lablanche, Quentin "
+"Laparre, Benjamin Lecomte, Halim Luquet, Ilyes Zaidi."
+
+#: ../../about.rst:20
+msgid "Licence"
+msgstr "License"
+
+#: ../../about.rst:22
+msgid "Projet académique — tous droits réservés aux auteurs."
+msgstr "Academic project - all rights reserved by the authors."
+
+#: ../../about.rst:25
+msgid "Dépôt source"
+msgstr "Source repository"
+
+#: ../../about.rst:27
+msgid "https://github.com/PrKBouchard/PyAdverseSearch"
+msgstr "https://github.com/PrKBouchard/PyAdverseSearch"

@@ -1,0 +1,748 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025-2026, Equipe PyAdverseSearch
+# This file is distributed under the same license as the PyAdverseSearch
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PyAdverseSearch 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-06 13:04-0400\n"
+"PO-Revision-Date: 2026-04-06 20:09+0000\n"
+"Last-Translator: Benjamin + Copilot\n"
+"Language-Team: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../interface/connect4_gui.rst:4
+msgid "Connect4GUI — Interface Puissance 4 (version de base)"
+msgstr "Connect4GUI — Power 4 Interface (basic version)"
+
+#: ../../interface/connect4_gui.rst:12
+#: ../../interface/connect4_gui_enhanced.rst:12 ../../interface/index.rst:14
+#: ../../interface/pdf_report.rst:12 ../../interface/reversi.rst:12
+#: ../../interface/tictactoe_gui.rst:12
+msgid "Description"
+msgstr "Description"
+
+#: ../../interface/connect4_gui.rst:14
+msgid ""
+"Interface graphique Tkinter pour jouer au Puissance 4 contre une IA. Cette "
+"version de base propose trois algorithmes (Minimax, Alpha-Beta, Monte Carlo)"
+" et trois niveaux de difficulté."
+msgstr ""
+"Tkinter graphic interface to play Puissance 4 against an AI. This basic "
+"version offers three algorithms (Minimax, Alpha-Beta, Monte Carlo) and three"
+" difficulty levels."
+
+#: ../../interface/connect4_gui.rst:19
+#: ../../interface/connect4_gui_enhanced.rst:19 ../../interface/reversi.rst:26
+#: ../../interface/tictactoe_gui.rst:18
+msgid "Lancement"
+msgstr "Launch"
+
+#: ../../interface/connect4_gui.rst:26
+#: ../../interface/connect4_gui_enhanced.rst:26
+#: ../../interface/tictactoe_gui.rst:25
+msgid "Fonctionnalités"
+msgstr "Features"
+
+#: ../../interface/connect4_gui.rst:28
+msgid "Écran de configuration (qui commence, algorithme, difficulté)"
+msgstr "Configuration screen (who starts, algorithm, difficulty)"
+
+#: ../../interface/connect4_gui.rst:29
+msgid "Plateau 6x7 interactif avec détection de la colonne survolée"
+msgstr "Interactive 6x7 board with hover column detection"
+
+#: ../../interface/connect4_gui.rst:30
+msgid "Affichage des cellules gagnantes en vert"
+msgstr "Showing winning cells in green"
+
+#: ../../interface/connect4_gui.rst:31
+msgid "Rejouer sans fermer la fenêtre"
+msgstr "Play again without closing the window"
+
+#: ../../interface/connect4_gui.rst:34
+msgid "Niveaux de difficulté"
+msgstr "Difficulty levels"
+
+#: ../../interface/connect4_gui.rst:40
+msgid "Niveau"
+msgstr "Level"
+
+#: ../../interface/connect4_gui.rst:41 ../../interface/tictactoe_gui.rst:41
+msgid "Profondeur"
+msgstr "Depth"
+
+#: ../../interface/connect4_gui.rst:42
+msgid "Facile"
+msgstr "Easy"
+
+#: ../../interface/connect4_gui.rst:43
+msgid "3"
+msgstr "3"
+
+#: ../../interface/connect4_gui.rst:44
+msgid "Moyen"
+msgstr "AVERAGE"
+
+#: ../../interface/connect4_gui.rst:45
+msgid "5"
+msgstr "5"
+
+#: ../../interface/connect4_gui.rst:46
+msgid "Difficile"
+msgstr "Difficult"
+
+#: ../../interface/connect4_gui.rst:47
+msgid "7"
+msgstr "7"
+
+#: ../../interface/connect4_gui.rst:50 ../../interface/tictactoe_gui.rst:34
+msgid "Algorithmes disponibles"
+msgstr "Algorithms available"
+
+#: ../../interface/connect4_gui.rst:52 ../../interface/tictactoe_gui.rst:49
+msgid "Minimax"
+msgstr "Minimax"
+
+#: ../../interface/connect4_gui.rst:53 ../../interface/tictactoe_gui.rst:43
+msgid "Alpha-Beta"
+msgstr "Alpha Beta"
+
+#: ../../interface/connect4_gui.rst:54
+msgid "Monte Carlo (1 000 à 3 000 itérations selon la difficulté)"
+msgstr "Monte Carlo (1,000 to 3,000 iterations depending on difficulty)"
+
+#: ../../interface/connect4_gui_enhanced.rst:4
+msgid "Connect4GUI Enhanced — Interface Puissance 4 complète"
+msgstr "Connect4GUI Enhanced — Complete Power 4 Interface"
+
+#: ../../interface/connect4_gui_enhanced.rst:14
+msgid ""
+"Version avancée de l'interface Puissance 4 intégrant tous les algorithmes de"
+" la bibliothèque, un panneau de statistiques en temps réel, et la génération"
+" d'un rapport PDF de fin de partie."
+msgstr ""
+"Advanced version of the Puissance 4 interface integrating all the algorithms"
+" in the library, a real-time statistics panel, and the generation of an end-"
+"of-game PDF report."
+
+#: ../../interface/connect4_gui_enhanced.rst:28
+msgid "**Algorithmes disponibles**"
+msgstr "**Algorithms available**"
+
+#: ../../interface/connect4_gui_enhanced.rst:30
+msgid "Mode Rapide : MTD(f) + PN-Search (recommandé)"
+msgstr "Quick Mode: MTD(f) + PN-Search (recommended)"
+
+#: ../../interface/connect4_gui_enhanced.rst:31
+msgid "Mode Auto Equilibré : AutoSolver avec tous les algorithmes"
+msgstr "Auto Balanced Mode: AutoSolver with all algorithms"
+
+#: ../../interface/connect4_gui_enhanced.rst:32
+msgid "Minimax, Alpha-Beta, MTD(f), Negamax, Monte Carlo, PN-Search (manuels)"
+msgstr ""
+"Minimax, Alpha-Beta, MTD(f), Negamax, Monte Carlo, PN-Search (manuals)"
+
+#: ../../interface/connect4_gui_enhanced.rst:34
+msgid "**Interface de jeu**"
+msgstr "**Game interface**"
+
+#: ../../interface/connect4_gui_enhanced.rst:36
+msgid "Plateau 6x7 interactif avec animation des coups"
+msgstr "Interactive 6x7 board with move animation"
+
+#: ../../interface/connect4_gui_enhanced.rst:37
+msgid "Indicateur de la colonne survolée"
+msgstr "Hovered column indicator"
+
+#: ../../interface/connect4_gui_enhanced.rst:38
+msgid "Mise en surbrillance de l'alignement gagnant"
+msgstr "Highlighting the winning lineup"
+
+#: ../../interface/connect4_gui_enhanced.rst:40
+msgid "**Panneau de statistiques**"
+msgstr "**Stats Panel**"
+
+#: ../../interface/connect4_gui_enhanced.rst:42
+msgid "Affiché en temps réel pendant la partie :"
+msgstr "Displayed in real time during the game:"
+
+#: ../../interface/connect4_gui_enhanced.rst:44
+msgid "Algorithme utilisé par l'IA pour le dernier coup"
+msgstr "Algorithm used by the AI ​​for the last move"
+
+#: ../../interface/connect4_gui_enhanced.rst:45
+msgid "Raison du choix (pour AutoSolver)"
+msgstr "Reason for choice (for AutoSolver)"
+
+#: ../../interface/connect4_gui_enhanced.rst:46
+msgid "Durée de calcul de l'IA"
+msgstr "AI calculation time"
+
+#: ../../interface/connect4_gui_enhanced.rst:47
+msgid "Nombre de coups joués"
+msgstr "Number of shots played"
+
+#: ../../interface/connect4_gui_enhanced.rst:49
+msgid "**Export PDF**"
+msgstr "**PDF export**"
+
+#: ../../interface/connect4_gui_enhanced.rst:51
+msgid ""
+"Bouton disponible en fin de partie pour générer un rapport complet via "
+":mod:`~PyAdverseSearch.Interface.pdf_report`."
+msgstr ""
+"Button available at the end of the game to generate a complete report via "
+":mod:`~PyAdverseSearch.Interface.pdf_report`."
+
+#: ../../interface/connect4_gui_enhanced.rst:55
+msgid "Architecture interne"
+msgstr "Internal architecture"
+
+#: ../../interface/index.rst:34
+msgid "Interfaces"
+msgstr "Interfaces"
+
+#: ../../interface/index.rst:4
+msgid "Interfaces graphiques"
+msgstr "Graphical interfaces"
+
+#: ../../interface/index.rst:6
+msgid ""
+"Ce chapitre documente les interfaces graphiques disponibles dans "
+"``PyAdverseSearch/Interface/``."
+msgstr ""
+"This chapter documents the graphical interfaces available in "
+"``PyAdverseSearch/Interface/``."
+
+#: ../../interface/index.rst:12
+msgid "Module"
+msgstr "Module"
+
+#: ../../interface/index.rst:13
+msgid "Framework"
+msgstr "Framework"
+
+#: ../../interface/index.rst:15
+msgid "``menu.py``"
+msgstr "Description"
+
+#: ../../interface/index.rst:16 ../../interface/index.rst:19
+#: ../../interface/index.rst:22 ../../interface/index.rst:25
+msgid "Tkinter"
+msgstr "Tkinter"
+
+#: ../../interface/index.rst:17
+msgid "Menu de lancement des interfaces graphiques"
+msgstr "Launcher menu for graphical interfaces"
+
+#: ../../interface/index.rst:18
+msgid "``connect4_gui.py``"
+msgstr "``connect4_gui.py``"
+
+#: ../../interface/index.rst:20
+msgid "Puissance 4 basique (3 algorithmes)"
+msgstr "Basic Connect 4 (3 algorithms)"
+
+#: ../../interface/index.rst:21
+msgid "``connect4_gui_enhanced.py``"
+msgstr "``connect4_gui_enhanced.py``"
+
+#: ../../interface/index.rst:23
+msgid "Puissance 4 étendu (tous les algorithmes + PDF)"
+msgstr "Advanced Connect 4 (all algorithms + PDF)"
+
+#: ../../interface/index.rst:24
+msgid "``tictactoe_gui.py``"
+msgstr "``tictactoe_gui.py``"
+
+#: ../../interface/index.rst:26
+msgid "Morpion (thème sombre)"
+msgstr "Tic-Tac-Toe (dark theme)"
+
+#: ../../interface/index.rst:27
+msgid "``Reversi.py``"
+msgstr "``Reversi.py``"
+
+#: ../../interface/index.rst:28
+msgid "Arcade"
+msgstr "Arcade"
+
+#: ../../interface/index.rst:29
+msgid "Reversi/Othello (plateau 8x8)"
+msgstr "Reversi/Othello (8x8 board)"
+
+#: ../../interface/index.rst:30
+msgid "``pdf_report.py``"
+msgstr "``pdf_report.py``"
+
+#: ../../interface/index.rst:31
+msgid "ReportLab"
+msgstr "ReportLab"
+
+#: ../../interface/index.rst:32
+msgid "Générateur de rapport PDF"
+msgstr "PDF report generator"
+
+#: ../../interface/menu.rst:2
+msgid "Menu Principal"
+msgstr "Main Menu"
+
+#: PyAdverseSearch.Interface.menu.launch_module:1 of
+msgid ""
+"Lance un module Python en utilisant l'argument -m. C'est la méthode correcte"
+" pour ta structure de dossier."
+msgstr ""
+"Starts a Python module using the -m argument. This is the correct method for"
+" your folder structure."
+
+#: ../../interface/pdf_report.rst:4
+msgid "pdf_report — Générateur de rapport PDF"
+msgstr "pdf_report — PDF report generator"
+
+#: PyAdverseSearch.Interface.pdf_report:1 of
+msgid "Generateur de rapport PDF de fin de partie pour Puissance 4."
+msgstr "End of game PDF report generator for Puissance 4."
+
+#: PyAdverseSearch.Interface.pdf_report._cell:1 of
+msgid ""
+"Convertit une chaine en Paragraph pour eviter la superposition dans les "
+"cellules."
+msgstr "Converts a string to a Paragraph to avoid overlapping in cells."
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:1 of
+msgid ""
+"Ouvre une boite de dialogue pour choisir le chemin de sauvegarde, puis "
+"genere le rapport PDF."
+msgstr ""
+"Opens a dialog box to choose the save path, then generates the PDF report."
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:5 of
+msgid "Parametres"
+msgstr "Settings"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:6 of
+msgid "game_summary"
+msgstr "game_summary"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:-1 of
+msgid "dict avec les cles :"
+msgstr "dict with the keys:"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:7 of
+msgid "\"winner\"       : str  \"Joueur\", \"IA\" ou \"Match nul\""
+msgstr "\"winner\": str \"Player\", \"AI\" or \"Draw\""
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:8 of
+msgid "\"total_moves\"  : int  nombre total de coups"
+msgstr "\"total_moves\": int total number of moves"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:9 of
+msgid "\"duration\"     : float  duree totale en secondes"
+msgstr "\"duration\": float total duration in seconds"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:10 of
+msgid "\"algo_mode\"    : str  \"classic\", \"fast\" ou nom fixe"
+msgstr "\"algo_mode\": str \"classic\", \"fast\" or fixed name"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:11 of
+msgid "\"difficulty\"   : str  \"easy\" / \"medium\" / \"hard\" / \"expert\""
+msgstr "\"difficulty\": str \"easy\" / \"medium\" / \"hard\" / \"expert\""
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:12 of
+msgid "\"human_starts\" : bool"
+msgstr "\"human_starts\": bool"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:14 of
+msgid "move_history : liste de str, ex. [\"1. Vous: Col 4\", \"2. IA: Col 4\", ...]"
+msgstr "move_history: list of str, e.g. [\"1. You: Col 4\", \"2. IA: Col 4\", ...]"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:16 of
+msgid "algo_records"
+msgstr "algo_records"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:-1 of
+msgid "liste d'objets AlgoRecord (ou dict) avec attributs/cles :"
+msgstr "list of AlgoRecord objects (or dict) with attributes/keys:"
+
+#: PyAdverseSearch.Interface.pdf_report.export_game_pdf:17 of
+msgid "move_number, algo_name, reason, elapsed, stats"
+msgstr "move_number, algo_name, reason, elapsed, stats"
+
+#: ../../interface/pdf_report.rst
+msgid "Paramètres"
+msgstr "Settings"
+
+#: PyAdverseSearch.Interface.pdf_report._make_simple_table:1 of
+msgid ""
+"Tableau simple avec des chaines (pas de Paragraph necessaire, contenu "
+"court)."
+msgstr "Simple table with strings (no Paragraph needed, short content)."
+
+#: PyAdverseSearch.Interface.pdf_report._make_algo_table:1 of
+msgid "Tableau avec Paragraphs dans les cellules pour le wrapping correct."
+msgstr "Table with Paragraphs in cells for correct wrapping."
+
+#: PyAdverseSearch.Interface.pdf_report._format_stats:1 of
+msgid "Formate les stats en une chaine multi-lignes lisible."
+msgstr "Formats stats into a readable multi-line string."
+
+#: ../../interface/pdf_report.rst
+msgid "Type renvoyé"
+msgstr "Returned type"
+
+#: PyAdverseSearch.Interface.pdf_report._format_stats:3 of
+msgid ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`str\\``"
+msgstr ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`str\\``"
+
+#: ../../interface/pdf_report.rst:14
+msgid ""
+"Module de génération de rapports PDF de fin de partie pour Puissance 4. "
+"Utilise la bibliothèque `ReportLab <https://www.reportlab.com/>`_."
+msgstr ""
+"Endgame PDF report generation module for Power 4. Uses the `ReportLab "
+"<https://www.reportlab.com/>`_ library."
+
+#: ../../interface/pdf_report.rst:18 ../../interface/reversi.rst:19
+msgid "Installation de la dépendance"
+msgstr "Installing the dependency"
+
+#: ../../interface/pdf_report.rst:25
+msgid "Point d'entrée principal"
+msgstr "Main entry point"
+
+#: ../../interface/pdf_report.rst:27
+msgid ""
+"La fonction :func:`export_game_pdf` est le seul point d'entrée public. Elle "
+"ouvre une boite de dialogue pour choisir l'emplacement de sauvegarde, puis "
+"génère le fichier PDF."
+msgstr ""
+"La fonction :func:`export_game_pdf` est le seul point d'entrée public. Elle "
+"ouvre une boite de dialogue pour choisir l'emplacement de sauvegarde, puis "
+"génère le fichier PDF."
+
+#: ../../interface/pdf_report.rst:32
+msgid "Structure du rapport généré"
+msgstr "Structure of the generated report"
+
+#: ../../interface/pdf_report.rst:34
+msgid "Le rapport PDF contient les sections suivantes :"
+msgstr "The PDF report contains the following sections:"
+
+#: ../../interface/pdf_report.rst:36
+msgid "**En-tête** : titre, date/heure, résultat de la partie"
+msgstr "**Header**: title, date/time, game result"
+
+#: ../../interface/pdf_report.rst:37
+msgid ""
+"**Résumé de la partie** : gagnant, nombre de coups, durée, mode IA, "
+"difficulté"
+msgstr ""
+"**Game summary**: winner, number of moves, duration, AI mode, difficulty"
+
+#: ../../interface/pdf_report.rst:38
+msgid "**Historique des coups** : liste numérotée de tous les coups joués"
+msgstr "**Shot history**: numbered list of all shots played"
+
+#: ../../interface/pdf_report.rst:39
+msgid ""
+"**Statistiques IA** : tableau des algorithmes utilisés avec temps de calcul "
+"et stats"
+msgstr ""
+"**AI statistics**: table of algorithms used with calculation time and stats"
+
+#: ../../interface/pdf_report.rst:42
+msgid "Format du paramètre ``game_summary``"
+msgstr "Format of the ``game_summary`` parameter"
+
+#: ../../interface/pdf_report.rst:56
+msgid "Format du paramètre ``algo_records``"
+msgstr "Format of the ``algo_records`` parameter"
+
+#: ../../interface/pdf_report.rst:58
+msgid ""
+"Liste d'objets :class:`~PyAdverseSearch.classes.autosolver.AlgoRecord` ou de"
+" dictionnaires avec les clés : ``move_number``, ``algo_name``, ``reason``, "
+"``elapsed``, ``stats``."
+msgstr ""
+"List of :class:`~PyAdverseSearch.classes.autosolver.AlgoRecord` objects or "
+"dictionaries with keys: ``move_number``, ``algo_name``, ``reason``, "
+"``elapsed``, ``stats``."
+
+#: ../../interface/pdf_report.rst:63
+msgid "Palette de couleurs du rapport"
+msgstr "Report color palette"
+
+#: ../../interface/pdf_report.rst:69 ../../interface/tictactoe_gui.rst:60
+msgid "Élément"
+msgstr "Element"
+
+#: ../../interface/pdf_report.rst:70 ../../interface/tictactoe_gui.rst:61
+msgid "Couleur"
+msgstr "Color"
+
+#: ../../interface/pdf_report.rst:71
+msgid "En-tête"
+msgstr "Stubborn"
+
+#: ../../interface/pdf_report.rst:72
+msgid "``#0066cc``"
+msgstr "``#0066cc``"
+
+#: ../../interface/pdf_report.rst:73
+msgid "Lignes paires"
+msgstr "Even lines"
+
+#: ../../interface/pdf_report.rst:74
+msgid "``#e8f0fe``"
+msgstr "``#e8f0fe``"
+
+#: ../../interface/pdf_report.rst:75
+msgid "En-tête algo"
+msgstr "Algo header"
+
+#: ../../interface/pdf_report.rst:76
+msgid "``#1a237e``"
+msgstr "``#1a237e``"
+
+#: ../../interface/pdf_report.rst:77
+msgid "Victoire"
+msgstr "Victory"
+
+#: ../../interface/pdf_report.rst:78
+msgid "``#1b5e20``"
+msgstr "``#1b5e20``"
+
+#: ../../interface/pdf_report.rst:79
+msgid "Défaite"
+msgstr "Defeat"
+
+#: ../../interface/pdf_report.rst:80
+msgid "``#b71c1c``"
+msgstr "``#b71c1c``"
+
+#: ../../interface/pdf_report.rst:81
+msgid "Match nul"
+msgstr "Draw"
+
+#: ../../interface/pdf_report.rst:82
+msgid "``#e65100``"
+msgstr "``#e65100``"
+
+#: ../../interface/pdf_report.rst:85
+msgid "Exemple d'utilisation"
+msgstr "Example of use"
+
+#: ../../interface/reversi.rst:4
+msgid "Reversi — Interface Othello / Reversi"
+msgstr "Reversi — Othello / Reversi interface"
+
+#: ../../interface/reversi.rst:14
+msgid ""
+"Interface graphique Arcade pour le jeu de Reversi (Othello) sur un plateau "
+"8x8. Utilise la bibliothèque `python-arcade <https://api.arcade.academy/>`_ "
+"pour le rendu graphique."
+msgstr ""
+"Arcade graphic interface for the game of Reversi (Othello) on an 8x8 board. "
+"Uses the `python-arcade <https://api.arcade.academy/>`_ library for graphics"
+" rendering."
+
+#: ../../interface/reversi.rst:33
+msgid "Règles du Reversi implémentées"
+msgstr "Reversi rules implemented"
+
+#: ../../interface/reversi.rst:35
+msgid "Plateau 8x8 avec position initiale officielle (4 pions au centre)"
+msgstr "8x8 board with official initial position (4 pawns in the center)"
+
+#: ../../interface/reversi.rst:36
+msgid "Pions noirs (``B``) pour MAX, pions blancs (``W``) pour MIN"
+msgstr "Black pawns (``B``) for MAX, white pawns (``W``) for MIN"
+
+#: ../../interface/reversi.rst:37
+msgid "Retournement des pions capturés dans les 8 directions"
+msgstr "Flipping captured pawns in the 8 directions"
+
+#: ../../interface/reversi.rst:38
+msgid "Gestion du PASS automatique si aucun coup légal n'est disponible"
+msgstr "Automatic PASS management if no legal move is available"
+
+#: ../../interface/reversi.rst:39
+msgid "Détection de fin de partie (plateau plein ou deux PASS consécutifs)"
+msgstr "End of game detection (full board or two consecutive PASS)"
+
+#: ../../interface/reversi.rst:42
+msgid "Classe ReversiState"
+msgstr "ReversiState class"
+
+#: ../../interface/reversi.rst:44
+msgid ""
+"La classe :class:`ReversiState` hérite de "
+":class:`~PyAdverseSearch.classes.state.State` et implémente directement dans"
+" le même fichier les fonctions de règles (``possible_actions``, "
+"``is_terminal``, ``utility``, ``winner_function``)."
+msgstr ""
+"The :class:`ReversiState` class inherits from "
+":class:`~PyAdverseSearch.classes.state.State` and implements the rule "
+"functions (``possible_actions``, ``is_terminal``, ``utility``, "
+"``winner_function``) directly in the same file."
+
+#: ../../interface/reversi.rst:48
+msgid ""
+"Elle s'intègre avec :class:`~PyAdverseSearch.classes.minimax.Minimax` via "
+"l'API :class:`~PyAdverseSearch.classes.game.Game`."
+msgstr ""
+"It integrates with :class:`~PyAdverseSearch.classes.minimax.Minimax` via the"
+" :class:`~PyAdverseSearch.classes.game.Game` API."
+
+#: ../../interface/reversi.rst:51
+msgid "Algorithme utilisé"
+msgstr "Algorithm used"
+
+#: ../../interface/reversi.rst:53
+msgid ""
+"L'IA utilise :class:`~PyAdverseSearch.classes.minimax.Minimax` avec une "
+"profondeur de 3. Pour des performances améliorées, il est possible de "
+"substituer :class:`~PyAdverseSearch.classes.alphabeta.AlphaBeta` avec une "
+"profondeur plus élevée."
+msgstr ""
+"The AI ​​uses :class:`~PyAdverseSearch.classes.minimax.Minimax` with a depth"
+" of 3. For improved performance, it is possible to override "
+":class:`~PyAdverseSearch.classes.alphabeta.AlphaBeta` with a higher depth."
+
+#: ../../interface/reversi.rst:58
+msgid "Constantes de configuration"
+msgstr "Configuration constants"
+
+#: ../../interface/tictactoe_gui.rst:4
+msgid "TicTacToeGUI — Interface Morpion"
+msgstr "TicTacToeGUI — Morpion interface"
+
+#: PyAdverseSearch.Interface.tictactoe_gui.TicTacToeGUI.create_config_screen:1
+#: of
+msgid "Écran de configuration moderne"
+msgstr "Modern setup screen"
+
+#: PyAdverseSearch.Interface.tictactoe_gui.TicTacToeGUI.create_radio:1 of
+msgid "Helper pour créer des boutons radio stylisés"
+msgstr "Helper for creating stylized radio buttons"
+
+#: PyAdverseSearch.Interface.tictactoe_gui.TicTacToeGUI.start_game:1 of
+msgid "Initialisation du jeu (Correction du bug initial_state incluse)"
+msgstr "Game initialization (initial_state bugfix included)"
+
+#: PyAdverseSearch.Interface.tictactoe_gui.TicTacToeGUI.create_game_board:1 of
+msgid "Plateau de jeu épuré"
+msgstr "Clean game board"
+
+#: ../../interface/tictactoe_gui.rst:14
+msgid ""
+"Interface graphique Tkinter pour le jeu du Morpion (Tic-Tac-Toe) avec un "
+"thème sombre moderne. Supporte trois algorithmes contre lesquels jouer."
+msgstr ""
+"Tkinter GUI for the Tic-Tac-Toe game with a modern dark theme. Supports "
+"three algorithms to play against."
+
+#: ../../interface/tictactoe_gui.rst:27
+msgid "Thème sombre (fond ``#1e1e2e``, accents violets)"
+msgstr "Dark theme (``#1e1e2e`` background, purple accents)"
+
+#: ../../interface/tictactoe_gui.rst:28
+msgid "Ecran de configuration avec boutons radio stylisés"
+msgstr "Configuration screen with stylized radio buttons"
+
+#: ../../interface/tictactoe_gui.rst:29
+msgid "Plateau 3x3 interactif (cellules 130x130 px)"
+msgstr "Interactive 3x3 board (cells 130x130 px)"
+
+#: ../../interface/tictactoe_gui.rst:30
+msgid "Détection automatique de la victoire et du match nul"
+msgstr "Automatic win and draw detection"
+
+#: ../../interface/tictactoe_gui.rst:31
+msgid "Option de rejouer"
+msgstr "Replay option"
+
+#: ../../interface/tictactoe_gui.rst:40
+msgid "Algorithme"
+msgstr "Algorithm"
+
+#: ../../interface/tictactoe_gui.rst:42
+msgid "Remarque"
+msgstr "Noticed"
+
+#: ../../interface/tictactoe_gui.rst:44 ../../interface/tictactoe_gui.rst:50
+msgid "9"
+msgstr "9"
+
+#: ../../interface/tictactoe_gui.rst:45
+msgid "Recommandé (rapide et optimal)"
+msgstr "Recommended (fast and optimal)"
+
+#: ../../interface/tictactoe_gui.rst:46
+msgid "Monte Carlo"
+msgstr "Monte Carlo"
+
+#: ../../interface/tictactoe_gui.rst:47
+msgid "1200 itérations"
+msgstr "1200 iterations"
+
+#: ../../interface/tictactoe_gui.rst:48
+msgid "Non déterministe"
+msgstr "Non-deterministic"
+
+#: ../../interface/tictactoe_gui.rst:51
+msgid "Optimal mais plus lent"
+msgstr "Optimal but slower"
+
+#: ../../interface/tictactoe_gui.rst:54
+msgid "Palette de couleurs"
+msgstr "Color palette"
+
+#: ../../interface/tictactoe_gui.rst:62
+msgid "Fond principal"
+msgstr "Main background"
+
+#: ../../interface/tictactoe_gui.rst:63
+msgid "``#1e1e2e``"
+msgstr "``#1e1e2e``"
+
+#: ../../interface/tictactoe_gui.rst:64
+msgid "Cartes / panneaux"
+msgstr "Maps/signs"
+
+#: ../../interface/tictactoe_gui.rst:65
+msgid "``#2b2b3b``"
+msgstr "``#2b2b3b``"
+
+#: ../../interface/tictactoe_gui.rst:66
+msgid "Accent"
+msgstr "Accent"
+
+#: ../../interface/tictactoe_gui.rst:67
+msgid "``#7289da``"
+msgstr "``#7289da``"
+
+#: ../../interface/tictactoe_gui.rst:68
+msgid "Symbole X"
+msgstr "X symbol"
+
+#: ../../interface/tictactoe_gui.rst:69
+msgid "``#ff5555``"
+msgstr "``#ff5555``"
+
+#: ../../interface/tictactoe_gui.rst:70
+msgid "Symbole O"
+msgstr "Symbol O"
+
+#: ../../interface/tictactoe_gui.rst:71
+msgid "``#50fa7b``"
+msgstr "``#50fa7b``"

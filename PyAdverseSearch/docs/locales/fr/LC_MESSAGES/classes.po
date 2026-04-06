@@ -1,0 +1,2442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025-2026, Equipe PyAdverseSearch
+# This file is distributed under the same license as the PyAdverseSearch
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyAdverseSearch 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-06 13:04-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: ../../classes/algorithm.rst:4
+msgid "SearchAlgorithm — Classe de base abstraite"
+msgstr ""
+
+#: PyAdverseSearch.classes.algorithm.SearchAlgorithm.choose_best_move:1 of
+msgid ""
+"À partir d'un état donné, retourne le meilleur coup (ou action) à jouer, "
+"ou un état enfant (selon votre choix)."
+msgstr ""
+
+#: PyAdverseSearch.classes.algorithm.choose_best_move:1 of
+msgid ""
+"Permet de sélectionner dynamiquement l'algorithme voulu (par son nom) et "
+"de retourner le meilleur coup/enfant à partir de l'état fourni."
+msgstr ""
+
+#: ../../classes/algorithm.rst:12 ../../classes/alphabeta.rst:12
+#: ../../classes/autosolver.rst:13 ../../classes/game.rst:12
+#: ../../classes/minimax.rst:12 ../../classes/montecarlo.rst:12
+#: ../../classes/mtdf.rst:13 ../../classes/negamax.rst:13
+#: ../../classes/node.rst:13 ../../classes/node.rst:29
+#: ../../classes/pnsearch.rst:13 ../../classes/state.rst:13
+#: ../../classes/tree.rst:13
+msgid "Description"
+msgstr ""
+
+#: ../../classes/algorithm.rst:14
+msgid ""
+":class:`SearchAlgorithm` est la classe abstraite dont héritent tous les "
+"algorithmes de la bibliothèque. Elle impose l'implémentation de la "
+"méthode :meth:`choose_best_move`."
+msgstr ""
+
+#: ../../classes/algorithm.rst:18
+msgid ""
+"Le module fournit également la fonction utilitaire "
+":func:`choose_best_move` qui permet de sélectionner dynamiquement un "
+"algorithme par son nom (chaîne de caractères), utile pour les scripts de "
+"comparaison ou les interfaces."
+msgstr ""
+
+#: ../../classes/algorithm.rst:23
+msgid "Algorithmes disponibles via ``choose_best_move``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:29
+msgid "Nom"
+msgstr ""
+
+#: ../../classes/algorithm.rst:30
+msgid "Classe associée"
+msgstr ""
+
+#: ../../classes/algorithm.rst:31
+msgid "``'minimax'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:32
+msgid ":class:`~PyAdverseSearch.classes.minimax.Minimax`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:33
+msgid "``'alphabeta'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:34
+msgid ":class:`~PyAdverseSearch.classes.alphabeta.AlphaBeta`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:35
+msgid "``'mtdf'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:36
+msgid ":class:`~PyAdverseSearch.classes.mtdf.MTDf`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:37
+msgid "``'montecarlo'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:38
+msgid ":class:`~PyAdverseSearch.classes.montecarlo.MonteCarlo`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:39
+msgid "``'pnsearch'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:40
+msgid ":class:`~PyAdverseSearch.classes.pnsearch.PNSearch`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:41
+msgid "``'negamax'``"
+msgstr ""
+
+#: ../../classes/algorithm.rst:42
+msgid ":class:`~PyAdverseSearch.classes.negamax.NegamaxSolver`"
+msgstr ""
+
+#: ../../classes/algorithm.rst:44 ../../classes/alphabeta.rst:55
+#: ../../classes/minimax.rst:57 ../../classes/montecarlo.rst:48
+#: ../../classes/mtdf.rst:88 ../../classes/negamax.rst:51
+#: ../../classes/node.rst:62 ../../classes/pnsearch.rst:80
+#: ../../classes/tree.rst:31 PyAdverseSearch.classes.minimax.Minimax:19
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:21
+#: PyAdverseSearch.classes.tree.GameTree:26 of
+msgid "Exemple::"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:4
+msgid "AlphaBeta — Minimax avec élagage"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta:1 of
+msgid ""
+"Algorithme Alpha-Beta avec élagage pour la recherche dans les arbres de "
+"jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta:3 of
+msgid ""
+"Alpha-Beta est une amélioration de Minimax qui élague les branches de "
+"l'arbre qui ne peuvent pas influencer la décision finale, réduisant ainsi"
+" le nombre de nœuds explorés tout en garantissant le même résultat que "
+"Minimax."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.__init__:1 of
+msgid "Initialise l'algorithme Alpha-Beta."
+msgstr ""
+
+#: ../../classes/alphabeta.rst ../../classes/game.rst ../../classes/minimax.rst
+#: ../../classes/montecarlo.rst ../../classes/negamax.rst
+#: ../../classes/node.rst ../../classes/pnsearch.rst ../../classes/state.rst
+#: ../../classes/tree.rst
+msgid "Paramètres"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.__init__:4 of
+msgid "Instance du jeu"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.__init__:6 of
+msgid "Profondeur maximale de recherche"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.__init__:8 of
+msgid "Temps maximum de recherche en secondes"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.__init__:10 of
+msgid "Utiliser une table de transposition pour mémoriser les états"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.choose_best_move:1 of
+msgid "Selects the best move for the current player using alpha-beta pruning."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.choose_best_move:4
+#: PyAdverseSearch.classes.pnsearch.PNSearch.choose_best_move:4 of
+msgid "État actuel du jeu"
+msgstr ""
+
+#: ../../classes/alphabeta.rst ../../classes/game.rst ../../classes/minimax.rst
+#: ../../classes/montecarlo.rst ../../classes/negamax.rst
+#: ../../classes/node.rst ../../classes/pnsearch.rst ../../classes/state.rst
+msgid "Renvoie"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.choose_best_move:5 of
+msgid "Le meilleur état enfant trouvé"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:1 of
+msgid "Returns the highest value for MAX with alpha-beta pruning."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:4
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:4
+#: PyAdverseSearch.classes.pnsearch.PNSearch._get_fallback_move:4 of
+msgid "État actuel"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:6
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:6 of
+msgid "Profondeur restante"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:8
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:8 of
+msgid "Meilleure valeur pour MAX"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:10
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:10 of
+msgid "Meilleure valeur pour MIN"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.max_value:11
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:11 of
+msgid "Valeur de l'état"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.min_value:1 of
+msgid "Returns the smallest value for MIN with alpha-beta pruning."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.time_limit_reached:1 of
+msgid "Vérifie si la limite de temps est atteinte."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta._get_state_key:1 of
+msgid "Génère une clé unique pour un état (pour la table de transposition)."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta._get_state_key:4 of
+msgid "État du jeu"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta._get_state_key:5 of
+msgid "Clé hashable représentant l'état"
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.get_statistics:1 of
+msgid "Retourne les statistiques de la dernière recherche."
+msgstr ""
+
+#: PyAdverseSearch.classes.alphabeta.AlphaBeta.get_statistics:3 of
+msgid "Dictionnaire avec les statistiques"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:14
+msgid ""
+":class:`AlphaBeta` est une amélioration de Minimax qui élague les "
+"branches de l'arbre qui ne peuvent pas influencer la décision finale. Il "
+"garantit le même résultat que Minimax tout en explorant significativement"
+" moins de noeuds."
+msgstr ""
+
+#: ../../classes/alphabeta.rst:19
+msgid "Principe de l'élagage"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:31
+msgid "Table de transposition"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:33
+msgid ""
+"Activable via ``use_transposition_table=True``. Mémorise les états déjà "
+"explorés pour éviter de les recalculer. Particulièrement utile pour les "
+"jeux avec des transpositions fréquentes (ex. Puissance 4)."
+msgstr ""
+
+#: ../../classes/alphabeta.rst:38 ../../classes/mtdf.rst:66
+#: ../../classes/negamax.rst:44
+msgid "Statistiques disponibles"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:40
+msgid ""
+"Après :meth:`choose_best_move`, la méthode :meth:`get_statistics` "
+"retourne ::"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:49 ../../classes/minimax.rst:37
+msgid "Complexité"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:51
+msgid "**Meilleur cas** : O(b\\ :sup:`d/2`) (coups triés parfaitement)"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:52
+msgid "**Pire cas** : O(b\\ :sup:`d`) (équivalent à Minimax)"
+msgstr ""
+
+#: ../../classes/alphabeta.rst:53
+msgid "**Cas moyen** : O(b\\ :sup:`3d/4`)"
+msgstr ""
+
+#: ../../classes/autosolver.rst:4
+msgid "AutoSolver — Sélecteur automatique d'algorithmes"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:2 of
+msgid "Module autosolver"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:4 of
+msgid ""
+"AutoSolver - Selecteur automatique d'algorithmes pour les jeux "
+"adversariaux."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:6 of
+msgid "Deux modes disponibles :"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:8 of
+msgid ""
+"``\"classic\"`` : utilise tous les algorithmes disponibles de facon "
+"intelligente selon la phase de jeu (debut / milieu / fin)."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:10 of
+msgid ""
+"``\"fast\"`` : utilise uniquement les algorithmes les plus rapides "
+"(MTD(f) avec iterative deepening + PN-Search en fin de partie)."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver:13 of
+msgid ""
+"Chaque appel a ``choose_best_move`` enregistre des statistiques sur "
+"l'algorithme utilise, la raison du choix et les performances mesurees."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AlgoRecord:1 of
+msgid "Enregistrement des statistiques d'un coup joue par AutoSolver."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver:1 of
+msgid "Selecteur automatique d'algorithmes."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver:4 of
+msgid "Parametres"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver:5 of
+msgid ""
+"game : instance du jeu (doit exposer game_is_terminal / game_utility) "
+"depth : profondeur de recherche souhaitee mode  : \"classic\" (tous les "
+"algos) ou \"fast\" (MTDf + PNSearch uniquement) rows  : nombre de lignes "
+"du plateau (pour calculer le remplissage) cols  : nombre de colonnes du "
+"plateau"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.choose_best_move:1 of
+msgid ""
+"Selectionne dynamiquement le meilleur algorithme pour cet etat, appelle "
+"choose_best_move sur cet algorithme et enregistre les stats."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.choose_best_move:4 of
+msgid "Retourne l'etat fils correspondant au meilleur coup."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.get_records:1 of
+msgid "Retourne la liste des AlgoRecord enregistres."
+msgstr ""
+
+#: ../../classes/game.rst ../../classes/minimax.rst
+#: ../../classes/montecarlo.rst ../../classes/node.rst ../../classes/state.rst
+#: PyAdverseSearch.classes.autosolver.AutoSolver of
+msgid "Type renvoyé"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.get_records:3 of
+msgid ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`list\\``"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.current_algo_name:1 of
+msgid "Nom du dernier algorithme utilise (ou '' si aucun)."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.current_algo_name:3
+#: PyAdverseSearch.classes.autosolver.AutoSolver.current_reason:3 of
+msgid ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`str\\``"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver.current_reason:1 of
+msgid "Raison du dernier choix (ou '' si aucun)."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._pick_fast:1 of
+msgid "Mode RAPIDE : MTD(f) par defaut, PN-Search si fin de partie proche."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._pick_classic:1 of
+msgid ""
+"Mode CLASSIC : utilise tous les algorithmes de maniere intelligente selon"
+" la phase de jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._pick_classic:4 of
+msgid "Repartition par numero de coup :"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._pick_classic:5 of
+msgid ""
+"0       -> Minimax (reference, profondeur limitee) 1-3     -> Alpha-Beta "
+"+ TT (debut, elagage efficace) 4-5     -> MTD(f) (fenetre nulle, rapide) "
+"6-8     -> Negamax (variante simplifiee) 9-12    -> Alpha-Beta + TT "
+"(milieu de partie fiable) 13-15   -> Monte Carlo si arbre large, sinon "
+"Alpha-Beta > 15    -> PN-Search si <= 8 cases, Alpha-Beta sinon"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._invoke:1 of
+msgid "Appelle l'algorithme avec sa propre interface."
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._collect_stats:1 of
+msgid ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`dict\\``"
+msgstr ""
+
+#: PyAdverseSearch.classes.autosolver.AutoSolver._count_empty:1 of
+msgid ":sphinx_autodoc_typehints_type:`\\:py\\:class\\:\\`int\\``"
+msgstr ""
+
+#: ../../classes/autosolver.rst:15
+msgid ""
+":class:`AutoSolver` est un méta-algorithme qui sélectionne dynamiquement "
+"le meilleur algorithme de recherche selon la phase de jeu. Il expose la "
+"même interface que les autres algorithmes (méthode "
+":meth:`choose_best_move`) et enregistre des statistiques pour chaque coup"
+" joué."
+msgstr ""
+
+#: ../../classes/autosolver.rst:21
+msgid "Modes disponibles"
+msgstr ""
+
+#: ../../classes/autosolver.rst:23
+msgid "``\"fast\"`` (recommandé)"
+msgstr ""
+
+#: ../../classes/autosolver.rst:24
+msgid "Utilise uniquement MTD(f) et PN-Search. Optimal en termes de vitesse."
+msgstr ""
+
+#: ../../classes/autosolver.rst:26
+msgid "Par défaut : MTD(f) avec Iterative Deepening + Zobrist"
+msgstr ""
+
+#: ../../classes/autosolver.rst:27
+msgid "En fin de partie (<= 10 cases vides) : PN-Search (résolution exacte)"
+msgstr ""
+
+#: ../../classes/autosolver.rst:29
+msgid "``\"classic\"``"
+msgstr ""
+
+#: ../../classes/autosolver.rst:30
+msgid ""
+"Utilise tous les algorithmes disponibles de manière séquentielle selon le"
+" numéro de coup :"
+msgstr ""
+
+#: ../../classes/autosolver.rst:37
+msgid "Coup(s)"
+msgstr ""
+
+#: ../../classes/autosolver.rst:38
+msgid "Algorithme"
+msgstr ""
+
+#: ../../classes/autosolver.rst:39
+msgid "Raison"
+msgstr ""
+
+#: ../../classes/autosolver.rst:40
+msgid "0"
+msgstr ""
+
+#: ../../classes/autosolver.rst:41
+msgid "Minimax"
+msgstr ""
+
+#: ../../classes/autosolver.rst:42
+msgid "Référence de base"
+msgstr ""
+
+#: ../../classes/autosolver.rst:43
+msgid "1-3"
+msgstr ""
+
+#: ../../classes/autosolver.rst:44 ../../classes/autosolver.rst:53
+msgid "Alpha-Beta + TT"
+msgstr ""
+
+#: ../../classes/autosolver.rst:45
+msgid "Debut de partie, élagage efficace"
+msgstr ""
+
+#: ../../classes/autosolver.rst:46
+msgid "4-5"
+msgstr ""
+
+#: ../../classes/autosolver.rst:47
+msgid "MTD(f)"
+msgstr ""
+
+#: ../../classes/autosolver.rst:48
+msgid "Fenêtre nulle, rapide"
+msgstr ""
+
+#: ../../classes/autosolver.rst:49
+msgid "6-8"
+msgstr ""
+
+#: ../../classes/autosolver.rst:50
+msgid "Negamax"
+msgstr ""
+
+#: ../../classes/autosolver.rst:51
+msgid "Variante simplifiée"
+msgstr ""
+
+#: ../../classes/autosolver.rst:52
+msgid "9-12"
+msgstr ""
+
+#: ../../classes/autosolver.rst:54
+msgid "Milieu de partie fiable"
+msgstr ""
+
+#: ../../classes/autosolver.rst:55
+msgid "13-15"
+msgstr ""
+
+#: ../../classes/autosolver.rst:56
+msgid "Monte Carlo ou Alpha-Beta"
+msgstr ""
+
+#: ../../classes/autosolver.rst:57
+msgid "Selon le facteur de branchement"
+msgstr ""
+
+#: ../../classes/autosolver.rst:58
+msgid "> 15"
+msgstr ""
+
+#: ../../classes/autosolver.rst:59
+msgid "PN-Search ou Alpha-Beta"
+msgstr ""
+
+#: ../../classes/autosolver.rst:60
+msgid "Selon le nombre de cases vides"
+msgstr ""
+
+#: ../../classes/autosolver.rst:63
+msgid "Classe AlgoRecord"
+msgstr ""
+
+#: ../../classes/autosolver.rst:69
+msgid ""
+"Chaque coup joué génère un :class:`AlgoRecord` accessible via "
+":meth:`get_records` ::"
+msgstr ""
+
+#: ../../classes/autosolver.rst:77 ../../classes/game.rst:39
+msgid "Exemple complet"
+msgstr ""
+
+#: ../../classes/game.rst:4
+msgid "Game — Configuration du jeu"
+msgstr ""
+
+#: PyAdverseSearch.classes.game:2 of
+msgid "Module game"
+msgstr ""
+
+#: PyAdverseSearch.classes.game:4 of
+msgid ""
+"Ce module contient la classe :class:`Game`, point d'entrée principal de "
+"la bibliothèque. Elle centralise les règles, les fonctions d'évaluation "
+"et l'état initial d'un jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:1 of
+msgid "Classe principale représentant un jeu à deux joueurs."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:3 of
+msgid ""
+"La classe :class:`Game` est utilisée par les développeurs pour configurer"
+" un jeu adverse. Elle regroupe toutes les fonctions définies par "
+"l'utilisateur (règles, état terminal, utilité, heuristique) et les expose"
+" via une interface unifiée utilisée par les algorithmes de recherche."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:9 of
+msgid "État initial du jeu (instance d'une sous-classe de :class:`State`)."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:12 of
+msgid "Fonction retournant la liste des actions légales depuis un état."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:15 of
+msgid "Fonction vérifiant si un état est terminal (fin de partie)."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:18 of
+msgid "Fonction déterminant le gagnant dans un état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:21 of
+msgid "Fonction d'utilité évaluant un état terminal (ex. +1, -1, 0)."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:24 of
+msgid "Fonction heuristique évaluant un état non-terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:27 of
+msgid "Indique si le joueur MAX commence la partie."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game:30 of
+msgid "Exemple d'utilisation::"
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_possible_actions:1 of
+msgid "Retourne la liste des actions légales depuis l'état donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_possible_actions:3 of
+msgid ""
+"Délègue l'appel à la fonction ``possible_actions`` fournie à "
+"l'initialisation."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_is_terminal:6
+#: PyAdverseSearch.classes.game.Game.game_possible_actions:6
+#: PyAdverseSearch.classes.minimax.Minimax.choose_best_move:8
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.choose_best_move:7 of
+msgid "État courant du jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_possible_actions:8
+#: PyAdverseSearch.classes.state.State._possible_actions:5 of
+msgid "Liste des actions disponibles."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_is_terminal:1 of
+msgid "Vérifie si l'état donné est un état terminal (fin de partie)."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_is_terminal:3 of
+msgid "Délègue l'appel à la fonction ``is_terminal`` fournie à l'initialisation."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_is_terminal:8
+#: PyAdverseSearch.classes.state.State._is_terminal:5 of
+msgid "``True`` si la partie est terminée, ``False`` sinon."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_utility:1 of
+msgid "Retourne la valeur d'utilité d'un état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_utility:3 of
+msgid ""
+"Ne doit être appelée que si l'état est terminal (voir "
+":meth:`game_is_terminal`). Convention : valeur positive si MAX gagne, "
+"négative si MIN gagne, 0 pour match nul."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_utility:7
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.evaluate_winner:4 of
+msgid "État terminal du jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_utility:9 of
+msgid "Valeur numérique représentant le résultat final."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_heuristic:1 of
+msgid "Retourne l'évaluation heuristique d'un état non-terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_heuristic:3 of
+msgid ""
+"Utilisée par les algorithmes pour évaluer des états intermédiaires à la "
+"profondeur maximale de recherche."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_heuristic:7 of
+msgid "État non-terminal du jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.game_heuristic:9
+#: PyAdverseSearch.classes.state.State._evaluate:5 of
+msgid "Score heuristique de la position."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.get_winner:1 of
+msgid "Retourne le gagnant de la partie si elle est terminée, sinon ``None``."
+msgstr ""
+
+#: PyAdverseSearch.classes.game.Game.get_winner:3 of
+msgid "Nom du gagnant (``\"MAX\"``, ``\"MIN\"`` ou ``None``)."
+msgstr ""
+
+#: ../../classes/game.rst:14
+msgid ""
+"La classe :class:`Game` est le **point d'entrée principal** pour les "
+"utilisateurs de la bibliothèque. Elle centralise toutes les fonctions "
+"définies par l'utilisateur et les expose via une interface unifiée "
+"consommée par les algorithmes."
+msgstr ""
+
+#: ../../classes/game.rst:19
+msgid "Schéma de fonctionnement"
+msgstr ""
+
+#: ../../classes/index.rst:28
+msgid "Classes"
+msgstr ""
+
+#: ../../classes/index.rst:4
+msgid "Classes principales"
+msgstr ""
+
+#: ../../classes/index.rst:6
+msgid ""
+"Ce chapitre documente toutes les classes du coeur de la bibliothèque "
+"situées dans ``PyAdverseSearch/classes/``."
+msgstr ""
+
+#: ../../classes/index.rst:10
+msgid "Architecture d'ensemble"
+msgstr ""
+
+#: ../../classes/minimax.rst:4
+msgid "Minimax — Algorithme classique"
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax:2 of
+msgid "Module minimax"
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax:4 of
+msgid ""
+"Ce module implémente l'algorithme Minimax classique avec limite de "
+"profondeur et limite de temps optionnelle."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:1 of
+msgid "Implémentation de l'algorithme Minimax classique."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:3 of
+msgid ""
+"Minimax explore récursivement l'arbre de jeu en alternant entre la "
+"maximisation du gain (joueur MAX) et la minimisation (joueur MIN). Il "
+"garantit le choix optimal si la recherche est exhaustive."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:8
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:9 of
+msgid "Instance du jeu configuré."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:11 of
+msgid ""
+"Profondeur maximale de recherche (couper l'exploration à cette "
+"profondeur)."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:14
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:15 of
+msgid "Limite de temps en secondes (``None`` = pas de limite)."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax:17 of
+msgid ""
+"Complexité temporelle : O(b^d) avec b le facteur de branchement et d la "
+"profondeur."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.choose_best_move:1 of
+msgid "Sélectionne le meilleur coup pour le joueur courant (MAX ou MIN)."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.choose_best_move:3 of
+msgid ""
+"Les états terminaux recoivent un bonus de priorité (utilité x 1000) pour "
+"favoriser les victoires immédiates. Pour les états non-terminaux, appelle"
+" récursivement :meth:`min_value` ou :meth:`max_value`."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.choose_best_move:10 of
+msgid "L'état enfant correspondant au meilleur coup."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.max_value:1 of
+msgid "Retourne la valeur maximale (utilité ou heuristique) pour le joueur MAX."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.max_value:4
+#: PyAdverseSearch.classes.minimax.Minimax.min_value:4 of
+msgid "État courant."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.max_value:7
+#: PyAdverseSearch.classes.minimax.Minimax.min_value:7 of
+msgid "Profondeur restante."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.max_value:9 of
+msgid "Valeur maximale trouvée."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.min_value:1 of
+msgid "Retourne la valeur minimale (utilité ou heuristique) pour le joueur MIN."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.min_value:9 of
+msgid "Valeur minimale trouvée."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.time_limit_reached:1
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.time_limit_reached:1 of
+msgid "Vérifie si la limite de temps de calcul est atteinte."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.time_limit_reached:3
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.time_limit_reached:3 of
+msgid "``True`` si le temps alloué est dépassé, ``False`` sinon."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.default_utility:1 of
+msgid ""
+"Calcule récursivement la valeur d'utilité d'un noeud à partir de ses "
+"enfants."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.default_utility:3 of
+msgid ""
+"Si le noeud est terminal, retourne directement son utilité. Sinon, "
+"applique MAX ou MIN selon le joueur actif."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.default_utility:7 of
+msgid "Noeud à évaluer."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.default_utility:9 of
+msgid "Valeur d'utilité calculée."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.next_move:1 of
+msgid ""
+"Retourne le noeud enfant correspondant au meilleur coup depuis un noeud "
+"donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.next_move:3 of
+msgid ""
+"Évalue chaque enfant avec :meth:`default_utility` et sélectionne le "
+"meilleur selon la perspective du joueur actif."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.next_move:7 of
+msgid "Noeud courant (avec enfants développés)."
+msgstr ""
+
+#: PyAdverseSearch.classes.minimax.Minimax.next_move:9 of
+msgid "Noeud enfant optimal, ou ``None`` si aucun enfant."
+msgstr ""
+
+#: ../../classes/minimax.rst:14
+msgid ""
+":class:`Minimax` implémente l'algorithme Minimax classique tel que défini"
+" par Russell & Norvig (2020). Il garantit un jeu optimal si la recherche "
+"est exhaustive, au prix d'une complexité exponentielle."
+msgstr ""
+
+#: ../../classes/minimax.rst:19 ../../classes/pnsearch.rst:24
+msgid "Principe"
+msgstr ""
+
+#: ../../classes/minimax.rst:39
+msgid ""
+"**Temporelle** : O(b\\ :sup:`d`) avec b = facteur de branchement, d = "
+"profondeur"
+msgstr ""
+
+#: ../../classes/minimax.rst:40
+msgid "**Spatiale** : O(b x d)"
+msgstr ""
+
+#: ../../classes/minimax.rst:43 ../../classes/montecarlo.rst:42
+#: ../../classes/pnsearch.rst:74
+msgid "Quand l'utiliser"
+msgstr ""
+
+#: ../../classes/minimax.rst:45
+msgid "Référence de base pour comparer les autres algorithmes"
+msgstr ""
+
+#: ../../classes/minimax.rst:46
+msgid "Jeux avec faible facteur de branchement (morpion)"
+msgstr ""
+
+#: ../../classes/minimax.rst:47
+msgid "Analyse pédagogique du processus de décision"
+msgstr ""
+
+#: ../../classes/minimax.rst:50
+msgid "Limitations"
+msgstr ""
+
+#: ../../classes/minimax.rst:52
+msgid "Beaucoup plus lent qu'Alpha-Beta pour les mêmes résultats"
+msgstr ""
+
+#: ../../classes/minimax.rst:53
+msgid "Pas de table de transposition intégrée"
+msgstr ""
+
+#: ../../classes/minimax.rst:54
+msgid ""
+"Pour des performances optimales, préférer "
+":class:`~PyAdverseSearch.classes.alphabeta.AlphaBeta` ou "
+":class:`~PyAdverseSearch.classes.mtdf.MTDf`"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:4
+msgid "MonteCarlo — Monte Carlo Tree Search"
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo:2 of
+msgid "Module montecarlo"
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo:4 of
+msgid ""
+"Ce module implémente l'algorithme Monte Carlo Tree Search (MCTS) avec la "
+"formule UCB1 pour l'équilibre exploration/exploitation."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:1 of
+msgid "Implémentation de Monte Carlo Tree Search (MCTS) avec UCB1."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:3 of
+msgid ""
+"L'algorithme repose sur quatre phases répétées : sélection, expansion, "
+"simulation (rollout aléatoire) et rétropropagation. Il n'a pas besoin de "
+"fonction heuristique explicite et fonctionne bien avec un grand nombre "
+"d'itérations."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:12 of
+msgid "Nombre maximum de simulations à effectuer."
+msgstr ""
+
+#: ../../classes/pnsearch.rst:20
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:18 of
+msgid "Référence :"
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo:19 of
+msgid "Kocsis, L. & Szepesvari, C. (2006). Bandit based Monte-Carlo Planning."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.choose_best_move:1 of
+msgid "Sélectionne le meilleur coup via MCTS."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.choose_best_move:3 of
+msgid ""
+"Lance jusqu'à ``max_iterations`` simulations depuis l'état racine, puis "
+"retourne le coup le plus visité."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.choose_best_move:9 of
+msgid "L'état enfant correspondant au coup le plus prometteur."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.run_simulation:1 of
+msgid ""
+"Exécute une simulation complète (sélection + expansion + rollout + "
+"rétropropagation)."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.run_simulation:4 of
+msgid "Noeud racine de la recherche."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.run_simulation:7 of
+#, python-brace-format
+msgid "Dictionnaire de statistiques ``{node_id: (wins, visits)}``."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.select:1 of
+msgid "Sélectionne le noeud feuille le plus prometteur via UCB1."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.select:3 of
+msgid ""
+"Descend dans l'arbre en appliquant :meth:`ucb1_select` tant que le noeud "
+"courant possède des enfants."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.select:7 of
+msgid "Noeud de départ."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.select:10 of
+msgid "Statistiques de visite."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.select:12 of
+msgid "Noeud feuille sélectionné."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.ucb1_select:1 of
+msgid "Sélectionne l'enfant avec le meilleur score UCB1."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.ucb1_select:3 of
+msgid ""
+"La formule UCB1 équilibre exploitation (score moyen) et exploration "
+"(noeuds peu visités). Le score est inversé pour les noeuds MIN."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.ucb1_select:7 of
+msgid "Noeud parent dont on sélectionne un enfant."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.ucb1_select:10 of
+#, python-brace-format
+msgid "Statistiques de visite ``{node_id: (wins, visits)}``."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.ucb1_select:12 of
+msgid "Noeud enfant sélectionné."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.simulate:1 of
+msgid ""
+"Effectue un rollout aléatoire depuis le noeud donné jusqu'à un état "
+"terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.simulate:4 of
+msgid "Noeud de départ du rollout."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.simulate:6 of
+msgid "Résultat de la simulation (+1 victoire MAX, -1 victoire MIN, 0 nul)."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.evaluate_winner:1 of
+msgid "Évalue le résultat d'un état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.evaluate_winner:6 of
+msgid "``+1`` si MAX gagne, ``-1`` si MIN gagne, ``0`` pour nul."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.backpropagate:1 of
+msgid "Propage le résultat d'une simulation vers la racine."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.backpropagate:3 of
+msgid ""
+"Met à jour les statistiques (gains et visites) de chaque noeud sur le "
+"chemin depuis le noeud simulé jusqu'à la racine."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.backpropagate:7 of
+msgid "Noeud depuis lequel remonter."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.backpropagate:10 of
+msgid "Résultat de la simulation (+1, -1 ou 0)."
+msgstr ""
+
+#: PyAdverseSearch.classes.montecarlo.MonteCarlo.backpropagate:13 of
+msgid "Dictionnaire de statistiques à mettre à jour."
+msgstr ""
+
+#: ../../classes/montecarlo.rst:14
+msgid ""
+":class:`MonteCarlo` implémente Monte Carlo Tree Search (MCTS) avec la "
+"formule d'exploration UCB1. L'algorithme ne nécessite pas de fonction "
+"heuristique explicite : il évalue les positions par des simulations "
+"aléatoires."
+msgstr ""
+
+#: ../../classes/montecarlo.rst:19
+msgid "Les quatre phases MCTS"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:29
+msgid "Formule UCB1"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:31
+msgid "UCB1(n) = \\frac{w_n}{v_n} + C \\sqrt{\\frac{\\ln V_n}{v_n}}"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:35
+#, python-brace-format
+msgid ""
+"Avec :math:`w_n` = gains, :math:`v_n` = visites du noeud, :math:`V_n` = "
+"visites du parent, :math:`C = \\sqrt{2}` par défaut."
+msgstr ""
+
+#: ../../classes/montecarlo.rst:38
+msgid ""
+"Pour le joueur MIN, le score est inversé (``-avg_score``) afin de "
+"conserver la logique de maximisation UCB1."
+msgstr ""
+
+#: ../../classes/montecarlo.rst:44
+msgid ""
+"Grands espaces d'états où une fonction heuristique fiable est difficile à"
+" définir"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:45
+msgid "Jeux avec fort facteur de branchement"
+msgstr ""
+
+#: ../../classes/montecarlo.rst:46
+msgid "Lorsqu'une limite de temps (plutôt que de profondeur) est préférable"
+msgstr ""
+
+#: ../../classes/mtdf.rst:4
+msgid "MTDf — Memory-enhanced Test Driver"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:1 of
+msgid "MTD(f) - Memory-enhanced Test Driver."
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:3 of
+msgid "Corrections apportees :"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:5 of
+msgid "MTDf appelle ``_alpha_beta_tt`` sur la RACINE (pas sur chaque enfant)"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:6 of
+msgid "Le first-guess est la valeur exacte rendue par la profondeur d-1"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:7 of
+msgid "La TT est conservee entre les profondeurs de l'iterative deepening"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:8 of
+msgid ""
+"Move ordering : center-bias Puissance 4 + score heuristique sans double "
+"``_apply_action`` (les enfants sont calcules une seule fois)"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:10 of
+msgid "Killer moves : memorise les actions qui ont produit des coupures"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf:12 of
+msgid "Reference: Aske Plaat et al. \"MTD(f), a new chess algorithm\" (1996)"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf._tt_lookup:1 of
+msgid ""
+"Retourne (hit, valeur, alpha_ajuste, beta_ajuste). Accepte les entrees de"
+" profondeur >= depth (plus profondes = plus precises)."
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf._order_actions:1 of
+msgid ""
+"Tri des actions pour maximiser l'elagage : 1. Killer moves (actions ayant"
+" produit des coupures a cette profondeur) 2. Best action memorisee dans "
+"la TT pour cet etat 3. Center-bias Puissance 4 (colonne centrale en "
+"premier) 4. Score heuristique de l'etat enfant"
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf._order_actions:7 of
+msgid ""
+"Les enfants ne sont calcules qu'une seule fois ici puis renvoyes pour "
+"eviter le double _apply_action dans _alpha_beta_tt."
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf._mtdf_at_depth:1 of
+msgid ""
+"MTDf correct : appele sur la RACINE, encadre la valeur par fenetres "
+"nulles jusqu'a ce que lb == ub (convergence), puis retourne la valeur "
+"exacte."
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf.choose_best_move:1 of
+msgid "Iterative Deepening + MTDf."
+msgstr ""
+
+#: PyAdverseSearch.classes.mtdf.MTDf.choose_best_move:3 of
+msgid ""
+"A chaque profondeur : 1. MTDf est appele sur la RACINE -> valeur exacte "
+"de la position 2. Cette valeur sert de first-guess pour la profondeur "
+"suivante 3. Le meilleur coup est lu depuis la TT (best_action stocke a la"
+" racine)"
+msgstr ""
+
+#: ../../classes/mtdf.rst:15
+msgid ""
+":class:`MTDf` implémente l'algorithme MTD(f) (*Memory-enhanced Test "
+"Driver with value f*), décrit par Aske Plaat et al. (1996). C'est une des"
+" implémentations les plus efficaces pour les jeux à deux joueurs avec une"
+" bonne fonction heuristique."
+msgstr ""
+
+#: ../../classes/mtdf.rst:21
+msgid "Principe de MTD(f)"
+msgstr ""
+
+#: ../../classes/mtdf.rst:23
+msgid ""
+"MTD(f) effectue plusieurs recherches Alpha-Beta à **fenêtre nulle** "
+"(``[f-1, f]``) en raffinant progressivement la valeur ``f`` jusqu'à "
+"converger vers la valeur exacte. Cette approche nécessite une table de "
+"transposition (TT) persistante entre les appels."
+msgstr ""
+
+#: ../../classes/mtdf.rst:44
+msgid "Fonctionnalités intégrées"
+msgstr ""
+
+#: ../../classes/mtdf.rst:46
+msgid "**Iterative Deepening (ID)**"
+msgstr ""
+
+#: ../../classes/mtdf.rst:47
+msgid ""
+"Exploration progressive de profondeur 1 à ``max_depth``. Le résultat de "
+"la profondeur ``d-1`` sert de ``first_guess`` pour la profondeur ``d``."
+msgstr ""
+
+#: ../../classes/mtdf.rst:50
+msgid "**Table de transposition avec bornes lb/ub**"
+msgstr ""
+
+#: ../../classes/mtdf.rst:51
+msgid ""
+"Stocke les bornes exactes (inférieure et supérieure) pour chaque état, "
+"permettant des coupures plus agressives."
+msgstr ""
+
+#: ../../classes/mtdf.rst:54
+msgid "**Hachage Zobrist**"
+msgstr ""
+
+#: ../../classes/mtdf.rst:55
+msgid ""
+"Hachage incrémental efficace pour les plateaux de type liste de listes. "
+"Initialisé automatiquement à la première utilisation."
+msgstr ""
+
+#: ../../classes/mtdf.rst:58
+msgid "**Killer moves**"
+msgstr ""
+
+#: ../../classes/mtdf.rst:59
+msgid ""
+"Mémorise les actions qui ont produit des coupures beta à chaque "
+"profondeur pour les explorer en priorité lors des itérations suivantes."
+msgstr ""
+
+#: ../../classes/mtdf.rst:62 ../../classes/negamax.rst:32
+msgid "**Tri des coups (move ordering)**"
+msgstr ""
+
+#: ../../classes/mtdf.rst:63
+msgid ""
+"Combine : TT best action > killer moves > center-bias (Puissance 4) > "
+"heuristique."
+msgstr ""
+
+#: ../../classes/mtdf.rst:82
+msgid "Référence"
+msgstr ""
+
+#: ../../classes/mtdf.rst:84
+msgid ""
+"Plaat, A., Schaeffer, J., Pijls, W., & de Bruin, A. (1996). *MTD(f), a "
+"new chess algorithm.* ICCA Journal, 19(4), 233–243."
+msgstr ""
+
+#: ../../classes/negamax.rst:4
+msgid "NegamaxSolver — Negamax avec quiescence"
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver:1 of
+msgid ""
+"Solveur basé sur l'algorithme Negamax avec élagage Alpha-Beta,  recherche"
+" de quiescence et table de transposition."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver:4 of
+msgid ""
+"Cette variante simplifiée du Minimax repose sur l'égalité : max(a, b) == "
+"-min(-a, -b). Elle permet de traiter les deux joueurs avec la même "
+"logique de maximisation."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.__init__:1 of
+msgid "Initialise le solveur avec une limite de profondeur de recherche."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.__init__:4 of
+msgid "Profondeur maximale de l'arbre de recherche (nombre de demi-coups)."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.get_best_move:1 of
+msgid "Détermine le meilleur coup à partir du nœud racine donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.get_best_move:3 of
+msgid ""
+"Explore tous les enfants du nœud racine en utilisant l'algorithme Negamax"
+" avec élagage Alpha-Beta, puis sélectionne l'action produisant la "
+"meilleure valeur d'évaluation."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.get_best_move:8 of
+msgid "Nœud racine représentant l'état actuel du jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.get_best_move:9 of
+msgid ""
+"La représentation du plateau (board) correspondant au meilleur coup "
+"trouvé."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:1 of
+msgid "Évalue numériquement un nœud donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:3 of
+msgid ""
+"Si le nœud est terminal, retourne sa valeur utilité pondérée par la "
+"profondeur pour favoriser les victoires rapides et retarder les défaites."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:7 of
+msgid ""
+"Sinon, utilise la fonction d'évaluation heuristique définie dans l'état "
+"du jeu si disponible."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:11 of
+msgid "Nœud à évaluer."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:13
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:12
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:20
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:20 of
+msgid "1 pour MAX, -1 pour MIN."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_evaluation:14 of
+msgid "Score numérique de la position."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:1 of
+msgid ""
+"Évalue la valeur d'un état donné indépendamment de la recherche d'un "
+"meilleur coup."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:4 of
+msgid ""
+"Cette méthode réinitialise la table de transposition afin de garantir une"
+" recherche propre, puis lance l'algorithme Negamax depuis l'état fourni."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:8 of
+msgid "Instance du jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:10 of
+msgid "État à évaluer."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:12 of
+msgid "1 si le joueur courant est MAX, -1 si MIN."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver.solve:13 of
+msgid "Valeur numérique estimée de l'état."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:1 of
+msgid "Calcule un score heuristique pour ordonner les coups."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:3 of
+msgid ""
+"Cette méthode est utilisée pour améliorer l'efficacité de l'élagage "
+"Alpha-Beta en explorant d'abord les coups potentiellement les plus "
+"prometteurs."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:7 of
+msgid "Les positions terminales favorables sont priorisées."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:10 of
+msgid "Nœud enfant à évaluer."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._get_move_score:13 of
+msgid "Score heuristique utilisé pour le tri des coups."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:1 of
+msgid "Implémentation récursive de l'algorithme Negamax avec élagage Alpha-Beta."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:3 of
+msgid ""
+"Explore récursivement l'arbre des coups possibles en alternant les "
+"perspectives des joueurs via l'inversion du signe (principe Negamax)."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:6 of
+msgid ""
+"Inclut : - Élagage Alpha-Beta pour réduire l'espace de recherche - Table "
+"de transposition pour éviter les recalculs - Recherche de quiescence "
+"lorsque la profondeur maximale est atteinte"
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:12 of
+msgid "Nœud courant."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:14 of
+msgid "Profondeur restante à explorer."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:16 of
+msgid "Borne inférieure (meilleure valeur garantie pour MAX)."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:18 of
+msgid "Borne supérieure (meilleure valeur garantie pour MIN)."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._negamax:21 of
+msgid "Meilleure valeur trouvée pour ce nœud."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:1 of
+msgid ""
+"Effectue une recherche de quiescence pour stabiliser l'évaluation en fin "
+"de profondeur."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:4 of
+msgid ""
+"Permet de limiter l'effet d'horizon en continuant d'explorer uniquement "
+"les coups tactiques (captures) susceptibles de modifier significativement"
+" l'évaluation."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:8 of
+msgid ""
+"Applique également : - Stand pat evaluation - Élagage Alpha-Beta - Delta "
+"pruning pour limiter les explorations inutiles"
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:14 of
+msgid "Nœud à analyser."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:16 of
+msgid "Borne inférieure."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:18 of
+msgid "Borne supérieure."
+msgstr ""
+
+#: PyAdverseSearch.classes.negamax.NegamaxSolver._quiescence:21 of
+msgid "Score stabilisé de la position."
+msgstr ""
+
+#: ../../classes/negamax.rst:15
+msgid ""
+":class:`NegamaxSolver` implémente l'algorithme Negamax, une variante de "
+"Minimax qui exploite la symétrie du score entre les deux joueurs :"
+msgstr ""
+
+#: ../../classes/negamax.rst:18
+#, python-brace-format
+msgid "\\text{max}(a, b) = -\\text{min}(-a, -b)"
+msgstr ""
+
+#: ../../classes/negamax.rst:22
+msgid ""
+"Ainsi, les deux joueurs utilisent la même logique de maximisation, le "
+"signe du score étant inversé à chaque niveau."
+msgstr ""
+
+#: ../../classes/negamax.rst:26
+msgid "Fonctionnalités avancées"
+msgstr ""
+
+#: ../../classes/negamax.rst:28
+msgid "**Table de transposition**"
+msgstr ""
+
+#: ../../classes/negamax.rst:29
+msgid ""
+"Évite de recalculer des positions déjà visitées. Utilise le hash de "
+"l'état (``hash(state)`` si disponible, sinon hash du plateau)."
+msgstr ""
+
+#: ../../classes/negamax.rst:33
+msgid ""
+"Avant d'explorer les enfants, les coups sont triés par score heuristique "
+"décroissant pour maximiser l'efficacité de l'élagage alpha-beta."
+msgstr ""
+
+#: ../../classes/negamax.rst:36
+msgid "**Recherche de quiescence**"
+msgstr ""
+
+#: ../../classes/negamax.rst:37
+msgid ""
+"Lorsque la profondeur maximale est atteinte, la recherche continue sur "
+"les coups tactiques (captures) pour éviter l'effet d'horizon. Utilise :"
+msgstr ""
+
+#: ../../classes/negamax.rst:40
+msgid ""
+"*Stand-pat evaluation* : si le score de base est déjà supérieur à beta, "
+"on coupe."
+msgstr ""
+
+#: ../../classes/negamax.rst:41
+msgid ""
+"*Delta pruning* : si même le meilleur gain possible ne dépasse pas alpha,"
+" on coupe."
+msgstr ""
+
+#: ../../classes/negamax.rst:46
+msgid ""
+"Après ``get_best_move`` ou ``_negamax``, les attributs suivants sont "
+"disponibles ::"
+msgstr ""
+
+#: ../../classes/negamax.rst:61
+msgid ""
+":meth:`get_best_move` retourne le **plateau** (``board``) du meilleur "
+"état, pas l'état lui-même. Pour obtenir l'état, chercher dans les enfants"
+" celui dont le plateau correspond."
+msgstr ""
+
+#: ../../classes/node.rst:4
+msgid "Node — Noeud de l'arbre de jeu"
+msgstr ""
+
+#: PyAdverseSearch.classes.node:2 of
+msgid "Module node"
+msgstr ""
+
+#: PyAdverseSearch.classes.node:4 of
+msgid ""
+"Ce module définit la classe :class:`Node`, représentant un noeud dans "
+"l'arbre de jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:1 of
+msgid "Represente un noeud dans l'arbre de jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:3 of
+msgid ""
+"Chaque noeud encapsule un état du jeu, maintient les relations "
+"parent/enfant dans l'arbre, et stocke des informations d'évaluation "
+"(utilité, heuristique)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:7 of
+msgid "L'état de jeu associé à ce noeud."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:10 of
+msgid "Le noeud parent dans l'arbre (``None`` si racine)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:13 of
+msgid "Profondeur du noeud dans l'arbre (0 = racine)."
+msgstr ""
+
+#: ../../classes/node.rst ../../classes/tree.rst
+msgid "Variables"
+msgstr ""
+
+#: ../../classes/node.rst:41 PyAdverseSearch.classes.node.Node:16 of
+msgid "Liste des noeuds successeurs."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:18 of
+msgid "Valeur d'utilité si le noeud est terminal, ``None`` sinon."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:20 of
+msgid "Score heuristique de l'état (évaluation non-terminale)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:22 of
+msgid "Identifiant unique auto-incrémenté du noeud."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node:24 of
+msgid "Joueur actif à ce noeud (``\"MAX\"`` ou ``\"MIN\"``)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.__init__:1 of
+msgid ""
+"Initialise un noeud avec l'état de jeu donné, le noeud parent et la "
+"profondeur."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.__init__:3 of
+msgid ""
+"Calcule également le joueur actif et évalue l'état si le noeud n'est pas "
+"terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.__init__:6 of
+msgid "L'état de jeu à ce noeud."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.__init__:8 of
+msgid "Le noeud parent dans l'arbre (None si racine)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.__init__:10 of
+msgid "La profondeur du noeud dans l'arbre."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node._expand:1 of
+msgid "Génère tous les états successeurs et les ajoute comme noeuds enfants."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node._expand:3 of
+msgid ""
+"Pour chaque action légale depuis l'état courant, crée un nouveau "
+":class:`Node` enfant et l'ajoute à la liste :attr:`children`."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.is_terminal:1 of
+msgid "Vérifie si ce noeud représente un état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.is_terminal:3 of
+msgid "``True`` si l'état est terminal, ``False`` sinon."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.display:1 of
+msgid "Affiche récursivement la structure de l'arbre dans la console."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.display:4 of
+msgid "Niveau d'indentation courant (utilisé en récursion)."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.calculatePlayer:1 of
+msgid "Détermine et assigne le joueur actif pour ce noeud."
+msgstr ""
+
+#: PyAdverseSearch.classes.node.Node.calculatePlayer:3 of
+msgid ""
+"Si l'état possède déjà un attribut ``player`` renseigné, celui-ci est "
+"utilisé directement. Sinon, le joueur est déterminé en fonction de la "
+"parité de la profondeur et de ``isMaxStarting`` dans la configuration du "
+"jeu."
+msgstr ""
+
+#: ../../classes/node.rst:15
+msgid ""
+"La classe :class:`Node` représente un noeud dans l'arbre de jeu. Chaque "
+"noeud encapsule un état, maintient les relations parent/enfant, et stocke"
+" les valeurs d'évaluation (utilité pour les terminaux, heuristique pour "
+"les autres)."
+msgstr ""
+
+#: ../../classes/node.rst:21
+msgid "Attributs principaux"
+msgstr ""
+
+#: ../../classes/node.rst:27
+msgid "Attribut"
+msgstr ""
+
+#: ../../classes/node.rst:28
+msgid "Type"
+msgstr ""
+
+#: ../../classes/node.rst:30
+msgid "``state``"
+msgstr ""
+
+#: ../../classes/node.rst:31
+msgid "``State``"
+msgstr ""
+
+#: ../../classes/node.rst:32
+msgid "État de jeu associé à ce noeud."
+msgstr ""
+
+#: ../../classes/node.rst:33
+msgid "``parent``"
+msgstr ""
+
+#: ../../classes/node.rst:34
+msgid "``Node``"
+msgstr ""
+
+#: ../../classes/node.rst:35
+msgid "Noeud parent (``None`` pour la racine)."
+msgstr ""
+
+#: ../../classes/node.rst:36
+msgid "``depth``"
+msgstr ""
+
+#: ../../classes/node.rst:37 ../../classes/node.rst:52
+msgid "``int``"
+msgstr ""
+
+#: ../../classes/node.rst:38
+msgid "Profondeur dans l'arbre (0 = racine)."
+msgstr ""
+
+#: ../../classes/node.rst:39
+msgid "``children``"
+msgstr ""
+
+#: ../../classes/node.rst:40
+msgid "``list[Node]``"
+msgstr ""
+
+#: ../../classes/node.rst:42
+msgid "``player``"
+msgstr ""
+
+#: ../../classes/node.rst:43
+msgid "``str``"
+msgstr ""
+
+#: ../../classes/node.rst:44
+msgid "Joueur actif (``\"MAX\"`` ou ``\"MIN\"``)."
+msgstr ""
+
+#: ../../classes/node.rst:45
+msgid "``utility``"
+msgstr ""
+
+#: ../../classes/node.rst:46
+msgid "``float | None``"
+msgstr ""
+
+#: ../../classes/node.rst:47
+msgid "Valeur d'utilité si terminal, sinon ``None``."
+msgstr ""
+
+#: ../../classes/node.rst:48
+msgid "``valuation``"
+msgstr ""
+
+#: ../../classes/node.rst:49
+msgid "``float``"
+msgstr ""
+
+#: ../../classes/node.rst:50
+msgid "Score heuristique (évaluation non-terminale)."
+msgstr ""
+
+#: ../../classes/node.rst:51
+msgid "``id``"
+msgstr ""
+
+#: ../../classes/node.rst:53
+msgid "Identifiant unique auto-incrémenté."
+msgstr ""
+
+#: ../../classes/node.rst:56
+msgid "Identifiants uniques"
+msgstr ""
+
+#: ../../classes/node.rst:58
+msgid ""
+"Les identifiants ``id`` sont gérés par le compteur de classe "
+"``Node.next_id`` qui s'incrémente à chaque création d'instance. Cela "
+"permet à des structures de statistiques (ex. dans MCTS) de référencer un "
+"noeud de manière stable."
+msgstr ""
+
+#: ../../classes/pnsearch.rst:4
+msgid "PNSearch — Proof-Number Search"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch:1 of
+msgid ""
+"Implémentation de l'algorithme Proof-Number Search (PN-Search) pour la "
+"résolution de fin de partie."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch:3 of
+msgid ""
+"PN-Search est un algorithme de recherche dans les arbres de jeu qui vise "
+"à prouver qu'une position est gagnante ou perdante en utilisant des "
+"nombres de preuve (phi) et de réfutation (delta)."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch:6 of
+msgid ""
+"Références : - Allis, L. V. (1994). Searching for Solutions in Games and "
+"Artificial Intelligence."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.ProofStatus:1 of
+msgid "Statut de preuve d'un nœud PN-Search"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode:1 of
+msgid ""
+"Nœud spécialisé pour l'algorithme PN-Search. Stocke les nombres de preuve"
+" (phi) et de réfutation (delta)."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.__init__:1 of
+msgid "Initialise un nœud PN-Search."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.__init__:4 of
+msgid "État du jeu à ce nœud"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.__init__:6 of
+msgid "Nœud parent (None pour la racine)"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.__init__:8 of
+msgid "Coup qui a mené à ce nœud depuis le parent"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.is_proven:1 of
+msgid "Retourne True si la position est prouvée gagnante"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.is_disproven:1 of
+msgid "Retourne True si la position est prouvée perdante"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNNode.is_solved:1 of
+msgid "Retourne True si la position est résolue (prouvée ou réfutée)"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch:1 of
+msgid "Implémentation de l'algorithme Proof-Number Search."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch:3 of
+msgid ""
+"PN-Search explore l'arbre de jeu de manière sélective en se concentrant "
+"sur les branches les plus prometteuses pour prouver ou réfuter une "
+"position."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.__init__:1 of
+msgid "Initialise l'algorithme PN-Search."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.__init__:4 of
+msgid "Instance de la classe Game"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.__init__:6 of
+msgid "Nombre maximum de nœuds à explorer (limite de mémoire)"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.__init__:8 of
+msgid "Active/désactive la table de transposition"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.choose_best_move:1 of
+msgid "Point d'entrée principal : trouve le meilleur coup depuis l'état donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.choose_best_move:5 of
+msgid "Meilleur état enfant à jouer, ou None si aucun coup gagnant trouvé"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.pn_search:1 of
+msgid "Algorithme principal de PN-Search."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.pn_search:4 of
+msgid "Nœud racine de la recherche"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.evaluate:1 of
+msgid "Évalue un nœud et initialise ses valeurs phi et delta."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.evaluate:4 of
+msgid "Nœud à évaluer"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._evaluate_terminal:1 of
+msgid "Évalue un nœud terminal en fonction de l'utilité."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._evaluate_terminal:4 of
+msgid "Nœud terminal à évaluer"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.select_most_proving_node:1 of
+msgid ""
+"Sélectionne le nœud le plus prometteur (Most Proving Node) à développer. "
+"Suit le chemin de l'arbre en choisissant à chaque niveau le meilleur "
+"enfant."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_partial_move:5
+#: PyAdverseSearch.classes.pnsearch.PNSearch.select_most_proving_node:5 of
+msgid "Nœud racine"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.select_most_proving_node:6 of
+msgid "Nœud le plus prometteur (feuille non développée)"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.expand_node:1 of
+msgid "Étend un nœud en générant tous ses enfants."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.expand_node:4 of
+msgid "Nœud à étendre"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.update_proof_numbers:1 of
+msgid ""
+"Met à jour les nombres de preuve et de réfutation d'un nœud en fonction "
+"de ses enfants."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.update_proof_numbers:5 of
+msgid "Nœud à mettre à jour"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.update_ancestors:1 of
+msgid "Met à jour les ancêtres d'un nœud en remontant vers la racine."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.update_ancestors:4 of
+msgid "Nœud dont les ancêtres doivent être mis à jour"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_move:1 of
+msgid "Extrait le meilleur coup d'une position prouvée gagnante."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_move:4 of
+msgid "Nœud racine (doit être prouvé)"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_move:5 of
+msgid "État résultant du meilleur coup"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_partial_move:1 of
+msgid ""
+"Extrait le meilleur coup d'une position non complètement résolue. Utilise"
+" les valeurs phi/delta comme heuristique."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._extract_best_partial_move:6 of
+msgid "État résultant du meilleur coup estimé"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._get_fallback_move:1 of
+msgid "Retourne un coup par défaut quand aucune analyse n'est disponible."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._get_fallback_move:5 of
+msgid "Premier coup possible ou None"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._hash_state:1 of
+msgid ""
+"Génère un hash unique pour un état de jeu. Utilisé pour la table de "
+"transposition et la détection de cycles."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._hash_state:5 of
+msgid "État à hasher"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch._hash_state:6 of
+msgid "Hash de l'état"
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.get_statistics:1 of
+msgid "Retourne des statistiques sur la recherche effectuée."
+msgstr ""
+
+#: PyAdverseSearch.classes.pnsearch.PNSearch.get_statistics:3 of
+msgid "Dictionnaire de statistiques"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:15
+msgid ""
+":class:`PNSearch` implémente l'algorithme **Proof-Number Search (PN-"
+"Search)**, conçu pour prouver ou réfuter mathématiquement une position de"
+" jeu. Contrairement aux algorithmes heuristiques, PN-Search garantit une "
+"réponse exacte (PROVEN / DISPROVEN) dans la limite de noeuds allouée."
+msgstr ""
+
+#: ../../classes/pnsearch.rst:21
+msgid ""
+"Allis, L. V. (1994). *Searching for Solutions in Games and Artificial "
+"Intelligence.*"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:26
+msgid "Chaque noeud maintient deux nombres :"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:32
+msgid "Nombre"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:33 ../../classes/pnsearch.rst:65
+msgid "Signification"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:34
+msgid "``phi``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:35
+msgid "Nombre de preuves (difficulté de prouver que le noeud est gagnant)"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:36
+msgid "``delta``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:37
+msgid "Nombre de réfutations (difficulté de prouver que le noeud est perdant)"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:39
+msgid ""
+"Pour un noeud OR (joueur MAX) : ``phi = min(enfants.phi)``, ``delta = "
+"sum(enfants.delta)``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:41
+msgid ""
+"Pour un noeud AND (joueur MIN) : ``phi = sum(enfants.phi)``, ``delta = "
+"min(enfants.delta)``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:43
+msgid ""
+"La recherche sélectionne toujours le **Most Proving Node (MPN)** : le "
+"noeud dont l'exploration réduira le plus le nombre de preuve de la "
+"racine."
+msgstr ""
+
+#: ../../classes/pnsearch.rst:47
+msgid "Classes internes"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:58
+msgid "Statuts de preuve"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:64
+msgid "Statut"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:66
+msgid "``UNKNOWN``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:67
+msgid "Position non encore résolue"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:68
+msgid "``PROVEN``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:69
+msgid "Position prouvée gagnante pour le joueur à jouer"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:70
+msgid "``DISPROVEN``"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:71
+msgid "Position prouvée perdante pour le joueur à jouer"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:76
+msgid "En fin de partie (peu de cases vides) pour des résolutions exactes"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:77
+msgid ""
+"Combiné avec d'autres algorithmes dans "
+":class:`~PyAdverseSearch.classes.autosolver.AutoSolver`"
+msgstr ""
+
+#: ../../classes/pnsearch.rst:78
+msgid "Pour des problèmes de jeu à résoudre (ex. puzzles d'échecs)"
+msgstr ""
+
+#: ../../classes/state.rst:4
+msgid "State — Représentation d'un état de jeu"
+msgstr ""
+
+#: PyAdverseSearch.classes.state:2 of
+msgid "Module state"
+msgstr ""
+
+#: PyAdverseSearch.classes.state:4 of
+msgid ""
+"Ce module définit la classe abstraite :class:`State`, base de toutes les "
+"représentations d'état de jeu dans PyAdverseSearch."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:1 of
+msgid "Classe abstraite représentant un état de jeu."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:3 of
+msgid ""
+"Chaque jeu doit fournir sa propre sous-classe de :class:`State` en "
+"implémentant au minimum la méthode :meth:`_apply_action`. Les autres "
+"méthodes délèguent leurs appels à l'instance de :class:`Game` associée "
+"via l'attribut ``game``."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:8 of
+msgid "Représentation du plateau de jeu (liste de listes, tableau NumPy, etc.)."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:10 of
+msgid "État précédent dans l'arbre de recherche (``None`` pour l'état racine)."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:13 of
+msgid "Référence à l'instance :class:`Game` pour accéder aux fonctions de règles."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State:17 of
+msgid ""
+"L'attribut ``game`` doit être initialisé avant tout appel aux méthodes "
+"``_possible_actions``, ``_is_terminal``, ``_utility`` ou ``_evaluate``."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._possible_actions:1 of
+msgid "Retourne la liste des actions légales depuis cet état."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._possible_actions:3 of
+msgid "Délègue l'appel à :meth:`Game.game_possible_actions`."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._is_terminal:1 of
+msgid "Vérifie si cet état est un état terminal (fin de partie)."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._is_terminal:3 of
+msgid "Délègue l'appel à :meth:`Game.game_is_terminal`."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._utility:1 of
+msgid "Retourne la valeur d'utilité de cet état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._utility:3 of
+msgid "Délègue l'appel à :meth:`Game.game_utility`."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._utility:5 of
+msgid "Valeur numérique du résultat final."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._evaluate:1 of
+msgid "Retourne l'évaluation heuristique de cet état non-terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._evaluate:3 of
+msgid "Délègue l'appel à :meth:`Game.game_heuristic`."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._generate_successors:1 of
+msgid "Génère et retourne tous les états successeurs possibles."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._generate_successors:3 of
+msgid ""
+"Applique chaque action légale à l'état courant et retourne la liste des "
+"états résultants."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State._generate_successors:6 of
+msgid "Liste des états successeurs."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State.display:1 of
+msgid "Affiche le plateau de jeu dans la console."
+msgstr ""
+
+#: PyAdverseSearch.classes.state.State.display:3 of
+msgid ""
+"Implémentation par défaut pour les plateaux de type liste de listes. Peut"
+" être surchargée dans les sous-classes pour un affichage personnalisé."
+msgstr ""
+
+#: ../../classes/state.rst:15
+msgid ""
+":class:`State` est la **classe abstraite** dont doit hériter toute "
+"représentation d'état de jeu. Elle définit l'interface utilisée par les "
+"algorithmes de recherche et l'arbre de jeu."
+msgstr ""
+
+#: ../../classes/state.rst:20
+msgid "Méthodes à implémenter dans les sous-classes"
+msgstr ""
+
+#: ../../classes/state.rst:22
+msgid ""
+"Seule ``_apply_action`` doit obligatoirement être surchargée, car les "
+"autres méthodes délèguent automatiquement à l'instance :class:`Game` :"
+msgstr ""
+
+#: ../../classes/state.rst:29
+msgid "Méthode"
+msgstr ""
+
+#: ../../classes/state.rst:30
+msgid "Rôle"
+msgstr ""
+
+#: ../../classes/state.rst:31
+msgid "``_apply_action(action)``"
+msgstr ""
+
+#: ../../classes/state.rst:32
+msgid "**Obligatoire.** Retourne le nouvel état après application de l'action."
+msgstr ""
+
+#: ../../classes/state.rst:33
+msgid "``_possible_actions()``"
+msgstr ""
+
+#: ../../classes/state.rst:34
+msgid "Délègue à ``game.game_possible_actions()``."
+msgstr ""
+
+#: ../../classes/state.rst:35
+msgid "``_is_terminal()``"
+msgstr ""
+
+#: ../../classes/state.rst:36
+msgid "Délègue à ``game.game_is_terminal()``."
+msgstr ""
+
+#: ../../classes/state.rst:37
+msgid "``_utility()``"
+msgstr ""
+
+#: ../../classes/state.rst:38
+msgid "Délègue à ``game.game_utility()``."
+msgstr ""
+
+#: ../../classes/state.rst:39
+msgid "``_evaluate()``"
+msgstr ""
+
+#: ../../classes/state.rst:40
+msgid "Délègue à ``game.game_heuristic()``."
+msgstr ""
+
+#: ../../classes/state.rst:41
+msgid "``display()``"
+msgstr ""
+
+#: ../../classes/state.rst:42
+msgid "Affiche le plateau (peut être surchargée)."
+msgstr ""
+
+#: ../../classes/state.rst:45
+msgid "Exemple d'implémentation"
+msgstr ""
+
+#: ../../classes/state.rst:67
+msgid ""
+"L'attribut ``game`` est défini automatiquement par :class:`Game` lors de "
+"l'initialisation si ``initial_state`` est fourni."
+msgstr ""
+
+#: ../../classes/tree.rst:4
+msgid "GameTree — Arbre de jeu complet"
+msgstr ""
+
+#: PyAdverseSearch.classes.tree:2 of
+msgid "Module tree"
+msgstr ""
+
+#: PyAdverseSearch.classes.tree:4 of
+msgid ""
+"Ce module définit la classe :class:`GameTree` qui construit et gère "
+"l'arbre de jeu complet."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:1 of
+msgid "Construit et gère l'arbre de jeu à partir d'un état initial."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:3 of
+msgid ""
+"La construction de l'arbre est effectuée de manière récursive à la "
+"création de l'instance. Chaque noeud est développé jusqu'à la profondeur "
+"maximale spécifiée ou jusqu'à atteindre un état terminal."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:8 of
+msgid "État initial du jeu (racine de l'arbre)."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:11 of
+msgid ""
+"Profondeur maximale de construction de l'arbre (``float('inf')`` pour un "
+"développement complet)."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:15 of
+msgid "Noeud racine de l'arbre."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:17 of
+msgid "Nombre de noeuds internes (non-feuilles) construits."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:19 of
+msgid "Nombre de noeuds feuilles (états terminaux ou limite de profondeur)."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree:23 of
+msgid ""
+"Pour des jeux complexes, la construction complète de l'arbre peut "
+"consommer beaucoup de mémoire. Utiliser ``max_depth`` pour limiter "
+"l'exploration."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree.__build_tree:1 of
+msgid "Construit récursivement l'arbre depuis le noeud donné."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree.__build_tree:3 of
+msgid ""
+"Méthode privée : ne pas appeler directement depuis l'extérieur. Développe"
+" chaque noeud non-terminal jusqu'à ``max_depth``."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree.__build_tree:7 of
+msgid "Noeud à développer."
+msgstr ""
+
+#: PyAdverseSearch.classes.tree.GameTree.display:1 of
+msgid ""
+"Affiche un résumé de l'arbre (nombre de noeuds et de feuilles) suivi de "
+"la structure complète depuis la racine."
+msgstr ""
+
+#: ../../classes/tree.rst:15
+msgid ""
+":class:`GameTree` construit récursivement l'arbre de jeu complet à partir"
+" d'un état initial. La construction se fait dans le constructeur via la "
+"méthode privée ``__build_tree``."
+msgstr ""
+
+#: ../../classes/tree.rst:20
+msgid ""
+"Pour des jeux complexes comme Puissance 4 ou les Échecs, un développement"
+" complet de l'arbre est **impossible en pratique** (espace mémoire "
+"exponentiel). Toujours spécifier ``max_depth`` pour limiter "
+"l'exploration."
+msgstr ""
+
+#: ../../classes/tree.rst:25
+msgid "Cas d'utilisation recommandés"
+msgstr ""
+
+#: ../../classes/tree.rst:27
+msgid "Jeux petits (morpion 3x3) : développement complet possible."
+msgstr ""
+
+#: ../../classes/tree.rst:28
+msgid "Visualisation pédagogique d'arbres de jeu à faible profondeur."
+msgstr ""
+
+#: ../../classes/tree.rst:29
+msgid "Pré-calcul d'arbres pour des analyses offline."
+msgstr ""
+
