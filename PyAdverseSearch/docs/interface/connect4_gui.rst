@@ -3,6 +3,13 @@
 Connect4GUI — Interface Puissance 4 (version de base)
 =======================================================
 
+
+**Aperçu :**
+
+.. image:: /_static/images/p4_game.png
+   :align: center
+   :width: 80%
+
 .. automodule:: PyAdverseSearch.Interface.connect4_gui
    :members:
    :undoc-members:

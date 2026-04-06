@@ -2,27 +2,27 @@
 
 ## Table des matières
 
-[Présentation de PyAdverseSearch](#1---présentation-de-pyadversesearch)
+[1 - Présentation de PyAdverseSearch](#1---présentation-de-pyadversesearch)
 
-[Structure du projet et utilisation](#2---structure-du-projet-et-utilisation)
+[2 - Documentation Sphinx](#2---documentation-sphinx-1)
 
-[Fonctionnement détaillé des classes](#3---fonctionnement-détaillé-des-classes)
+[3 - Structure du projet et utilisation](#3---structure-du-projet-et-utilisation)
+
+[4 - Fonctionnement détaillé des classes](#4---fonctionnement-détaillé-des-classes)
 
 [Outils et modules utilitaires](#recommandation-du-chat--outils-et-utilitaires)
 
-[Fonctions Privées et protégées](#4--fonctions-privées-et-protégées)
+[5 - Fonctions Privées et protégées](#5---fonctions-privées-et-protégées)
 
-[Pour les developpeurs](#5--pour-les-developpeurs)
+[6 - Pour les développeurs](#6---pour-les-developpeurs)
 
-[Jeux intégrés disponibles](#6---jeux-intégrés-disponibles)
+[7 - Jeux intégrés disponibles](#7---jeux-intégrés-disponibles)
 
-[Interaction homme VS IA](#7---interaction-homme-vs-ia-jouer-contre-minimax)
+[8 - Interaction homme VS IA](#8---interaction-homme-vs-ia-jouer-contre-minimax)
 
-[Monte Carlo](#8---algorithmes-supplémentaires--monte-carlo)
+[9 - Monte Carlo](#9---algorithmes-supplémentaires--monte-carlo)
 
-[Tests unitaires complets](#9---tests-unitaires-complets)
-
-[Documentation Sphinx](#10---documentation-sphinx)
+[10 - Tests unitaires complets](#10---tests-unitaires-complets)
 
 [Conclusion](#conclusion)
 
@@ -45,7 +45,139 @@ PyAdverseSearch est une bibliothèque Python spécialisée dans la programmation
 La bibliothèque s'articule autour de plusieurs classes fondamentales, chacune ayant un rôle spécifique dans l'architecture globale :
 
 
-## 2 - Structure du projet et utilisation
+## 3 - Documentation Sphinx
+
+Nouveauté : La documentation est désormais traduite en anglais et français, et accessible via le script dédié.
+
+PyAdverseSearch dispose d'une documentation technique complète générée avec **Sphinx** et le thème `sphinx-rtd-theme`. Elle couvre l'intégralité des classes, algorithmes et interfaces graphiques du projet.
+
+### Accès rapide à la documentation
+
+La documentation est déjà pré-générée dans le dépôt. Il suffit d'ouvrir directement ce fichier dans un navigateur :
+
+[Ouvrir la documentation Sphinx (index.html)](PyAdverseSearch/docs/_build/html/index.html)
+
+*(Par défaut la langue est l'anglais, vous pouvez ouvrir la version française via les liens sur la même page)*
+
+Sous Windows via PowerShell :
+
+    Start-Process "docs\_build\html\index.html"
+
+Aucune installation supplémentaire n'est nécessaire pour consulter la documentation existante.
+
+---
+
+### Regénérer la documentation (optionnel)
+
+Les étapes ci-dessous sont uniquement nécessaires si vous souhaitez regénérer la documentation après avoir modifié le code source.
+
+### Prérequis
+
+Les dépendances nécessaires sont déjà incluses dans l'environnement virtuel du projet. Pour les installer manuellement :
+
+    pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
+
+### Structure de la documentation
+
+    docs/
+    ├── conf.py              # Configuration Sphinx
+    ├── index.rst            # Page d'accueil
+    ├── about.rst            # Informations sur le projet
+    ├── Makefile             # Build Unix/macOS
+    ├── make.bat             # Build Windows
+    ├── _static/
+    │   └── custom.css       # Personnalisation CSS
+    ├── classes/
+    │   ├── index.rst
+    │   ├── algorithm.rst    # SearchAlgorithm (classe de base)
+    │   ├── game.rst         # Game
+    │   ├── state.rst        # State (classe abstraite)
+    │   ├── node.rst         # Node
+    │   ├── tree.rst         # GameTree
+    │   ├── minimax.rst      # Minimax
+    │   ├── alphabeta.rst    # AlphaBeta
+    │   ├── negamax.rst      # NegamaxSolver
+    │   ├── montecarlo.rst   # MonteCarlo (MCTS)
+    │   ├── mtdf.rst         # MTDf
+    │   ├── pnsearch.rst     # PNSearch
+    │   └── autosolver.rst   # AutoSolver
+    └── interface/
+        ├── index.rst
+        ├── connect4_gui.rst          # Interface Puissance 4 basique
+        ├── connect4_gui_enhanced.rst # Interface Puissance 4 complète
+        ├── tictactoe_gui.rst         # Interface Morpion
+        ├── reversi.rst               # Interface Reversi (Arcade)
+        └── pdf_report.rst            # Générateur de rapport PDF
+
+### Générer la documentation HTML
+
+**Sur Windows :**
+
+    cd docs
+    .\build_docs.bat
+
+Ou directement via Python (recommandé dans un environnement virtuel) :
+
+    cd docs
+    python -m sphinx -b html . _build/html
+
+**Sur Linux / macOS :**
+
+    cd docs
+    make html
+
+
+### Autres formats disponibles
+
+Sphinx supporte plusieurs formats de sortie :
+
+| Commande              | Format produit          |
+|-----------------------|-------------------------|
+| `make html`           | Site web HTML           |
+| `make latexpdf`       | PDF via LaTeX           |
+| `make epub`           | Livre numérique EPUB    |
+| `make text`           | Texte brut              |
+| `make linkcheck`      | Vérification des liens  |
+
+### Ajouter de la documentation
+
+Pour documenter une nouvelle classe ou un nouveau module :
+
+1. Ajouter des docstrings au format Sphinx (`:param:`, `:type:`, `:return:`, `:rtype:`) dans le fichier Python.
+2. Créer un fichier `.rst` dans `docs/classes/` ou `docs/interface/` :
+
+        .. Ma nouvelle classe
+        Mon titre
+        =========
+
+        .. automodule:: PyAdverseSearch.classes.ma_classe
+           :members:
+           :undoc-members:
+           :show-inheritance:
+
+3. Référencer ce fichier dans le `toctree` du fichier `index.rst` parent.
+4. Relancer `make html`.
+
+### Conventions de docstrings
+
+Le projet utilise le style Sphinx natif (`:param:` / `:type:` / `:return:`) :
+
+    def ma_methode(self, state, depth):
+        """
+        Description courte.
+
+        Description longue optionnelle.
+
+        :param state: État courant du jeu.
+        :type state: State
+        :param depth: Profondeur restante.
+        :type depth: int
+        :return: Valeur évaluée.
+        :rtype: float
+        """
+
+
+## 3 - Structure du projet et utilisation
 
 ### Organisation du code source
 
@@ -141,7 +273,7 @@ PyAdverseSearch est conçu pour être hautement extensible. Vous pouvez :
 
 La bibliothèque fournit des interfaces claires et une documentation détaillée pour faciliter ces extensions.
 
-## 3 - Fonctionnement détaillé des classes
+## 4 - Fonctionnement détaillé des classes
 
 ### Classe Game
 
@@ -271,7 +403,7 @@ Le module visualization.py fournit des outils pour :
 
 L'utilisation judicieuse de ces modules permet d'améliorer significativement l'efficacité du développement et la qualité des analyses réalisées avec PyAdverseSearch.
 
-## 4- Fonctions Privées et protégées
+## 5- Fonctions Privées et protégées
 
 Dans PyAdverseSearch, certaines fonctions sont nommées avec un ou deux tirets bas en préfixe pour indiquer leur usage restreint, selon les conventions de Python.
 
@@ -281,7 +413,7 @@ Une fonction privée (préfixée par __) est utilisée dans la classe GameTree. 
 
 L’adoption de ces conventions permet de séparer clairement ce qui relève de la logique interne et ce qui peut être utilisé ou redéfini par les développeurs. Cela contribue à la stabilité, la lisibilité et la sécurité du code dans l’ensemble du projet.
 
-## 5- Pour les developpeurs 
+## 6- Pour les developpeurs 
 
 ## Guide de développement pour PyAdverseSearch
 
@@ -362,7 +494,7 @@ Les contributions au projet se font via GitHub. Chaque fonctionnalité doit êtr
 
 Ce guide vise à fournir aux développeurs toutes les informations nécessaires pour comprendre, utiliser et faire évoluer PyAdverseSearch de manière structurée et efficace.
 
-## 6 - Jeux intégrés disponibles
+## 7 - Jeux intégrés disponibles
 
 En plus de la structure modulaire permettant d'ajouter ses propres jeux, PyAdverseSearch intègre déjà plusieurs jeux de démonstration pleinement fonctionnels :
 
@@ -374,7 +506,7 @@ Connect 4 : dans test/state_connect4.py
 
 Chaque jeu implémente les méthodes requises (apply_action(), evaluate(), possible_actions()...) en héritant de la classe State, avec des variantes spécifiques du plateau de jeu. Ces fichiers servent à la fois de démonstration et de base pour jouer contre une IA ou exécuter des tests automatiques.
 
-## 7 - Interaction homme vs IA (jouer contre Minimax)
+## 8 - Interaction homme vs IA (jouer contre Minimax)
 
 Depuis la branche dev, il est désormais possible de jouer contre l’algorithme Minimax dans plusieurs jeux. Cette fonctionnalité permet à un utilisateur humain d’interagir en temps réel avec l’IA, en alternant les tours et en observant les choix stratégiques effectués par l’algorithme.
 Dans le fichier state_tictactoe.py, une première version de cette interaction a été intégrée, offrant la possibilité de simuler un affrontement en console entre un joueur humain et l'algorithme Minimax appliqué au jeu du morpion (Tic Tac Toe).
@@ -389,13 +521,13 @@ Les coups possibles sont affichés, et le joueur sélectionne manuellement son o
 La partie progresse jusqu’à ce qu’un état terminal soit atteint (victoire ou match nul).
 
 
-## 8 - Algorithmes supplémentaires : Monte Carlo
+## 9 - Algorithmes supplémentaires : Monte Carlo
 
 En plus de Minimax, une version expérimentale de l'algorithme Monte Carlo est présente dans le fichier montecarlo.py. Il s'agit d'un algorithme basé sur des simulations répétées aléatoires de parties, permettant d'évaluer les actions non pas par calcul exhaustif, mais par échantillonnage probabiliste.
 La méthode principale de cette classe est choose_best_move(state), comme dans Minimax, et elle peut être utilisée de manière interchangeable pour certains jeux.
 
 
-## 9 - Tests unitaires complets
+## 10 - Tests unitaires complets
 
 Le dossier test/ contient des scripts de tests variés :
 
@@ -409,134 +541,6 @@ test_full_game_next_move.py : joue une partie complète en alternant IA et coups
 
 Tous ces tests permettent de s'assurer que les modules du projet restent fonctionnels même après modifications.
 
-
-
-## 10 - Documentation Sphinx
-
-PyAdverseSearch dispose d'une documentation technique complète générée avec **Sphinx** et le thème `sphinx-rtd-theme`. Elle couvre l'intégralité des classes, algorithmes et interfaces graphiques du projet.
-
-### Accès rapide à la documentation
-
-La documentation est déjà pré-générée dans le dépôt. Il suffit d'ouvrir directement ce fichier dans un navigateur :
-
-    docs/_build/html/index.html
-
-Sous Windows via PowerShell :
-
-    Start-Process "docs\_build\html\index.html"
-
-Aucune installation supplémentaire n'est nécessaire pour consulter la documentation existante.
-
----
-
-### Regénérer la documentation (optionnel)
-
-Les étapes ci-dessous sont uniquement nécessaires si vous souhaitez regénérer la documentation après avoir modifié le code source.
-
-### Prérequis
-
-Les dépendances nécessaires sont déjà incluses dans l'environnement virtuel du projet. Pour les installer manuellement :
-
-    pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints
-
-### Structure de la documentation
-
-    docs/
-    ├── conf.py              # Configuration Sphinx
-    ├── index.rst            # Page d'accueil
-    ├── about.rst            # Informations sur le projet
-    ├── Makefile             # Build Unix/macOS
-    ├── make.bat             # Build Windows
-    ├── _static/
-    │   └── custom.css       # Personnalisation CSS
-    ├── classes/
-    │   ├── index.rst
-    │   ├── algorithm.rst    # SearchAlgorithm (classe de base)
-    │   ├── game.rst         # Game
-    │   ├── state.rst        # State (classe abstraite)
-    │   ├── node.rst         # Node
-    │   ├── tree.rst         # GameTree
-    │   ├── minimax.rst      # Minimax
-    │   ├── alphabeta.rst    # AlphaBeta
-    │   ├── negamax.rst      # NegamaxSolver
-    │   ├── montecarlo.rst   # MonteCarlo (MCTS)
-    │   ├── mtdf.rst         # MTDf
-    │   ├── pnsearch.rst     # PNSearch
-    │   └── autosolver.rst   # AutoSolver
-    └── interface/
-        ├── index.rst
-        ├── connect4_gui.rst          # Interface Puissance 4 basique
-        ├── connect4_gui_enhanced.rst # Interface Puissance 4 complète
-        ├── tictactoe_gui.rst         # Interface Morpion
-        ├── reversi.rst               # Interface Reversi (Arcade)
-        └── pdf_report.rst            # Générateur de rapport PDF
-
-### Générer la documentation HTML
-
-**Sur Windows :**
-
-    cd docs
-    .\make.bat html
-
-Ou directement via Python (recommandé dans un environnement virtuel) :
-
-    cd docs
-    python -m sphinx -b html . _build/html
-
-**Sur Linux / macOS :**
-
-    cd docs
-    make html
-
-
-### Autres formats disponibles
-
-Sphinx supporte plusieurs formats de sortie :
-
-| Commande              | Format produit          |
-|-----------------------|-------------------------|
-| `make html`           | Site web HTML           |
-| `make latexpdf`       | PDF via LaTeX           |
-| `make epub`           | Livre numérique EPUB    |
-| `make text`           | Texte brut              |
-| `make linkcheck`      | Vérification des liens  |
-
-### Ajouter de la documentation
-
-Pour documenter une nouvelle classe ou un nouveau module :
-
-1. Ajouter des docstrings au format Sphinx (`:param:`, `:type:`, `:return:`, `:rtype:`) dans le fichier Python.
-2. Créer un fichier `.rst` dans `docs/classes/` ou `docs/interface/` :
-
-        .. Ma nouvelle classe
-        Mon titre
-        =========
-
-        .. automodule:: PyAdverseSearch.classes.ma_classe
-           :members:
-           :undoc-members:
-           :show-inheritance:
-
-3. Référencer ce fichier dans le `toctree` du fichier `index.rst` parent.
-4. Relancer `make html`.
-
-### Conventions de docstrings
-
-Le projet utilise le style Sphinx natif (`:param:` / `:type:` / `:return:`) :
-
-    def ma_methode(self, state, depth):
-        """
-        Description courte.
-
-        Description longue optionnelle.
-
-        :param state: État courant du jeu.
-        :type state: State
-        :param depth: Profondeur restante.
-        :type depth: int
-        :return: Valeur évaluée.
-        :rtype: float
-        """
 
 
 ## Conclusion

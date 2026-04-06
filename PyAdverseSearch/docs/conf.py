@@ -95,6 +95,7 @@ html_theme_options = {
 
 html_static_path = ['_static']
 html_css_files = ['custom.css']
+templates_path = ['_templates']
 
 html_title = 'PyAdverseSearch - Documentation'
 html_short_title = 'PyAdverseSearch'
@@ -103,7 +104,9 @@ html_short_title = 'PyAdverseSearch'
 # Langue
 # ---------------------------------------------------------------------------
 
-language = 'fr'
+language = 'en'
+locale_dirs = ['locales/']
+gettext_compact = False
 
 # ---------------------------------------------------------------------------
 # Autres
@@ -111,5 +114,3 @@ language = 'fr'
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
-
-

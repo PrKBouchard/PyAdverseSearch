@@ -21,3 +21,53 @@ h2 {
     padding-bottom: 4px;
 }
 
+.lang-switch-static {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    z-index: 1200;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid #d6dbe4;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.lang-switch-static .lang-label,
+.lang-switch-static .lang-sep {
+    display: none;
+}
+
+.lang-switch-static a {
+    min-width: 38px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: #4a5568;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch-static a:hover {
+    background: #eef3f9;
+    color: #1f2d3d;
+}
+
+.lang-switch-static a.active {
+    background: #0066cc;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+    .lang-switch-static {
+        top: 10px;
+        right: 10px;
+    }
+}
+

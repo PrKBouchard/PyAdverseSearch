@@ -1,0 +1,13 @@
+{% extends "!layout.html" %}
+
+{% block menu %}
+{% set lang_prefix = '../' * (pagename.count('/') + 1) %}
+<div class="lang-switch-static" role="navigation" aria-label="Language switch">
+  <span class="lang-label">Lang:</span>
+  <a href="{{ lang_prefix }}en/{{ pagename }}.html" class="{% if language == 'en' %}active{% endif %}">EN</a>
+  <span class="lang-sep">|</span>
+  <a href="{{ lang_prefix }}fr/{{ pagename }}.html" class="{% if language == 'fr' %}active{% endif %}">FR</a>
+</div>
+{{ super() }}
+{% endblock %}
+

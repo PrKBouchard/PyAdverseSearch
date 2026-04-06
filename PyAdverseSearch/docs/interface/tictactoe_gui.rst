@@ -3,6 +3,13 @@
 TicTacToeGUI — Interface Morpion
 ==================================
 
+
+**Aperçu :**
+
+.. image:: /_static/images/morpion_game.png
+   :align: center
+   :width: 80%
+
 .. automodule:: PyAdverseSearch.Interface.tictactoe_gui
    :members:
    :undoc-members:

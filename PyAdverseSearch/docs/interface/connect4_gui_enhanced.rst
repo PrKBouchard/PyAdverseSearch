@@ -3,6 +3,13 @@
 Connect4GUI Enhanced — Interface Puissance 4 complète
 ======================================================
 
+
+**Aperçu :**
+
+.. image:: /_static/images/p4_menu.png
+   :align: center
+   :width: 80%
+
 .. automodule:: PyAdverseSearch.Interface.connect4_gui_enhanced
    :members:
    :undoc-members:

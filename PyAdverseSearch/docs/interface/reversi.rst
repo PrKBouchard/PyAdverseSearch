@@ -3,6 +3,13 @@
 Reversi — Interface Othello / Reversi
 =======================================
 
+
+**Aperçu :**
+
+.. image:: /_static/images/reversi_1.png
+   :align: center
+   :width: 80%
+
 .. automodule:: PyAdverseSearch.Interface.Reversi
    :members:
    :undoc-members:

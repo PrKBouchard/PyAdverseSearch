@@ -12,6 +12,9 @@ Ce chapitre documente les interfaces graphiques disponibles dans ``PyAdverseSear
    * - Module
      - Framework
      - Description
+   * - ``menu.py``
+     - Tkinter
+     - Menu de lancement des interfaces graphiques
    * - ``connect4_gui.py``
      - Tkinter
      - Puissance 4 basique (3 algorithmes)
@@ -32,6 +35,7 @@ Ce chapitre documente les interfaces graphiques disponibles dans ``PyAdverseSear
    :maxdepth: 2
    :caption: Interfaces
 
+   menu
    connect4_gui
    connect4_gui_enhanced
    tictactoe_gui
