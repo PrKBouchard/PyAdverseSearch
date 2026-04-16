@@ -19,7 +19,6 @@ class NegamaxSolver:
         :param depth_limit: Profondeur maximale de l'arbre de recherche (nombre de demi-coups).
         """
         self.tracer = tracer
-        
         self.depth_limit = depth_limit
         self.transposition_table = {}
 
