@@ -10,13 +10,11 @@ def maxn(state, depth, players, heuristic):
 
     player_index = players.index(state.player)
 
-    # Cache clé simple (à améliorer si besoin)
     key = (str(state.board), state.player, depth)
 
     if key in maxn._cache:
         return maxn._cache[key]
 
-    # Terminal ou profondeur max
     if depth == 0 or state.is_game_over():
         result = (heuristic(state), None)
         maxn._cache[key] = result
@@ -46,7 +44,6 @@ def maxn(state, depth, players, heuristic):
     return result
 
 
-# cache global
 maxn._cache = {}
 
 
