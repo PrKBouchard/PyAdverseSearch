@@ -1,71 +1,63 @@
-# maxn.py
+from functools import lru_cache
 
-def heuristic_scores(state, players):
-    raw_scores = state.get_scores()
-    scores = raw_scores[:]
+def maxn(state, depth, players, heuristic):
+    """
+    state      : état du jeu (doit avoir get_possible_moves, _apply_action, is_game_over)
+    depth      : profondeur
+    players    : liste des joueurs
+    heuristic  : fonction(state) -> liste de scores
+    """
 
-    size = len(state.board)
-    center = size // 2
+    player_index = players.index(state.player)
 
-    for i, p in enumerate(players):
-        temp_state = state.__class__(state.board, p)
-        mobility = len([m for m in temp_state.get_possible_moves() if m])
-        scores[i] += 2 * mobility
+    # Cache clé simple (à améliorer si besoin)
+    key = (str(state.board), state.player, depth)
 
-    for r in range(size):
-        for c in range(size):
-            cell = state.board[r][c]
-            if cell in players:
-                i = players.index(cell)
-                dist = abs(r - center) + abs(c - center)
-                scores[i] += max(0, 6 - dist)
+    if key in maxn._cache:
+        return maxn._cache[key]
 
-    directions = [(-1,0),(1,0),(0,-1),(0,1)]
-
-    for r in range(size):
-        for c in range(size):
-            cell = state.board[r][c]
-            if cell in players:
-                i = players.index(cell)
-
-                adjacent = 0
-                for dr, dc in directions:
-                    nr, nc = r + dr, c + dc
-                    if 0 <= nr < size and 0 <= nc < size:
-                        if state.board[nr][nc] == cell:
-                            adjacent += 1
-
-                if adjacent == 0:
-                    scores[i] -= 3
-
-    return scores
-
-
-def maxn(state, depth, players):
-    if depth == 0 or state.is_terminal():
-        return heuristic_scores(state, players), None
-
-    current_player = state.player
-    player_index = players.index(current_player)
+    # Terminal ou profondeur max
+    if depth == 0 or state.is_game_over():
+        result = (heuristic(state), None)
+        maxn._cache[key] = result
+        return result
 
     best_score = None
     best_move = None
 
-    for move in state.get_possible_moves():
-        next_state = state.apply_action(move)
-        scores, _ = maxn(next_state, depth - 1, players)
+    moves = state.get_possible_moves()
+
+    moves = sorted(
+        moves,
+        key=lambda m: heuristic(state._apply_action(m))[player_index] if m else -9999,
+        reverse=True
+    )
+
+    for move in moves:
+        next_state = state._apply_action(move)
+        scores, _ = maxn(next_state, depth - 1, players, heuristic)
 
         if best_score is None or scores[player_index] > best_score[player_index]:
             best_score = scores
             best_move = move
 
-    return best_score, best_move
+    result = (best_score, best_move)
+    maxn._cache[key] = result
+    return result
 
 
-def choose_move(state, players, depth=3):
-    scores, move = maxn(state, depth, players)
+# cache global
+maxn._cache = {}
+
+
+def choose_move_maxn(state, players, heuristic, depth=3):
+    _, move = maxn(state, depth, players, heuristic)
 
     if move is None:
-        return state.apply_action(None)
+        return state._apply_action(None)
 
-    return state.apply_action(move)
+    return state._apply_action(move)
+
+
+def reset_cache():
+    maxn._cache.clear()
