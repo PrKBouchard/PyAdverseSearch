@@ -1,3 +1,4 @@
+#python -m PyAdverseSearch.Interface.chess_gui 
 import time
 import tkinter as tk
 from tkinter import ttk
@@ -41,15 +42,16 @@ class ChessGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Chess Game IA ♟")
-        self.show_menu()
-        self.cell_size = 70
+        self.cell_size = 65
         self.board_size = 8
         self.selected_piece = False
+        self.game = None
         self.state = None
         self.from_pos = None
         self.to_pos = None
-        self.frameMenu = tk.Frame(self.root, bg=BG_ORANGE)
+        self.main_frame = tk.Frame(self.root, bg=BG_ORANGE)
         self.algorithm = None
+        self.show_menu()
 
 
     def show_menu(self):
@@ -59,17 +61,18 @@ class ChessGUI:
         root.columnconfigure(2, weight=1)
         self.root.geometry("700x700")
         self.root.configure(bg=BG_ORANGE)
+        
+        for widget in self.main_frame.winfo_children():
+            widget.destroy()
+        self.main_frame.grid(column=1, row=1)
 
-        self.frameMenu = tk.Frame(self.root, bg=BG_ORANGE)
-        self.frameMenu.grid(column=1, row=1)
+        self.main_frame.columnconfigure(0, weight=1)
+        self.main_frame.columnconfigure(1, weight=1)
+        self.main_frame.columnconfigure(2, weight=1)
 
-        self.frameMenu.columnconfigure(0, weight=1)
-        self.frameMenu.columnconfigure(1, weight=1)
-        self.frameMenu.columnconfigure(2, weight=1)
+        title = tk.Label(self.main_frame, text="CHESS", font=TITLE_FONT, bg=BG_ORANGE, fg="white").grid(row=0, column=1, padx=20, pady=(80,10))
 
-        title = tk.Label(self.frameMenu, text="CHESS", font=TITLE_FONT, bg=BG_ORANGE, fg="white").grid(row=0, column=1, padx=20, pady=(80,10))
-
-        frame = tk.Frame(self.frameMenu, bg=BG_BEIGE, highlightbackground=LIGHT_SQUARE, highlightthickness=3)
+        frame = tk.Frame(self.main_frame, bg=BG_BEIGE, highlightbackground=LIGHT_SQUARE, highlightthickness=3)
         frame.grid(row=2, column=1, padx=20, pady=20)
 
         color = tk.StringVar()
@@ -91,7 +94,7 @@ class ChessGUI:
         level_label = tk.Label(frame, text="LEVEL :", font=FORM_FONT, fg=BG_ORANGE).grid(row=6, column=0, padx=20, pady=(20,10), columnspan=2)
         level_combo_box = ttk.Combobox(
             frame,
-            values=["Easy (Depth 2)", "Medium (Depth 4)", "Hard (Depth 6)"],
+            values=["Easy (Depth 3)", "Medium (Depth 4)", "Hard (Depth 5)"],
             state="readonly",
         )
         level_combo_box.grid(row=7, column=0, columnspan=2)
@@ -102,20 +105,21 @@ class ChessGUI:
 
 
     def start_game(self, color, algo, level):
-        #print("Selected Color:"+ color +", Algorithm:" + algo +", Level: "+ level)
+        for widget in self.main_frame.winfo_children():
+            widget.destroy()
         
         player_color = color.upper()
         maxStarting = True if color == 'black' else False
         depth = int(level.split('(')[1].split(')')[0].split()[1])
         
-        game = generate_chess_game(maxStarting)
-        self.state = game.state
+        self.game = generate_chess_game(maxStarting)
+        self.state = self.game.state
         if algo == "Alpha-Beta":
-            self.algorithm = AlphaBeta(game=game, max_depth=depth)
+            self.algorithm = AlphaBeta(game=self.game, max_depth=depth)
         elif algo == "Minimax":
-            self.algorithm = Minimax(game=game, max_depth=depth)
+            self.algorithm = Minimax(game=self.game, max_depth=depth)
         else:
-            self.algorithm = MonteCarlo(game=game, max_iterations=depth*200)  # Adjust iterations based on depth
+            self.algorithm = MonteCarlo(game=self.game, max_iterations=depth*200)  # Adjust iterations based on depth
 
         self.draw_board()
 
@@ -123,20 +127,19 @@ class ChessGUI:
             self.ai_move()
 
     def draw_board(self):
-        for widget in self.frameMenu.winfo_children():
-            widget.destroy()
         root.rowconfigure(0, weight=1)
         root.rowconfigure(1, weight=1)
         root.rowconfigure(2, weight=1)
-        frame = tk.Frame(self.root, bg="#FFFFFF")
-        frame.grid(column=1, row=1)
-        # Faire un frame grid et un canva pour chaque case du plateau, et y placer une étiquette avec le symbole Unicode de la pièce correspondante. Utiliser les couleurs LIGHT_SQUARE et DARK_SQUARE pour les cases claires et foncées.
+        
+        
+        frameBoard = tk.Frame(self.main_frame)
+        frameBoard.grid(column=1, row=1)
         index = 0
         
         for row in range(8):
             for col in range(8):
                 square_color = LIGHT_SQUARE if (row + col) % 2 == 0 else DARK_SQUARE
-                cell_canvas = tk.Canvas(frame, width=self.cell_size, height=self.cell_size, bg=square_color, highlightthickness=0)
+                cell_canvas = tk.Canvas(frameBoard, width=self.cell_size, height=self.cell_size, bg=square_color, highlightthickness=0)
                 cell_canvas.grid(row=row, column=col)
 
                 piece = self.state.board.cases[index]
@@ -163,6 +166,10 @@ class ChessGUI:
             self.selected_piece = True
 
     def move_piece(self, from_pos, to_pos):
+        if self.game.is_terminal(self.state):
+            self.game_over()
+            print("Game over! No more moves available.")
+            return
         try:
             user_input= from_pos+to_pos
             user_state = self.state.user_move(user_input)
@@ -171,6 +178,8 @@ class ChessGUI:
             root.update() 
             self.ai_move()
         except ValueError as error:
+            if from_pos == "h1" and to_pos == "a8":
+                self.game_over()
             print(str(error))
 
     def ai_move(self):
@@ -180,12 +189,28 @@ class ChessGUI:
         print(f"AI played in {end - start:.3f} seconds.")
 
         if best_state is None:
+            self.game_over()
             print("No move found (final state or a mistake...).")
             return
         
         self.state = best_state
         self.draw_board()
 
+    def game_over(self):
+        root.rowconfigure(0, weight=1)
+        root.rowconfigure(1, weight=1)
+        root.rowconfigure(2, weight=1)
+
+        for widget in self.main_frame.winfo_children():
+            widget.destroy()
+
+        frame = tk.Frame(self.main_frame, bg=BG_BEIGE, highlightbackground=LIGHT_SQUARE, highlightthickness=3)
+        frame.grid(row=2, column=1, padx=20, pady=20)
+
+        result_text = "It's a draw!" if self.game.utility(self.state) == 0 else ("Congratulations! You win!" if self.game.utility(self.state) == 1000 else "Game over! The AI wins.")
+        result_label = tk.Label(frame, text=result_text, font=FORM_FONT, fg=BG_ORANGE).grid(row=1, column=1, padx=20, pady=(20,10))
+        play_again_button = tk.Button(frame, text="Play Again", font=FORM_FONT, bg=BG_ORANGE, fg="white", command= self.show_menu)
+        play_again_button.grid(row=2, column=1, padx=20, pady=(40,20))
 
 def center(win):
     """

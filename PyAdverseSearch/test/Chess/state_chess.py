@@ -37,6 +37,9 @@ class ChessState(State):
         """
         action_from, action_to, type = action
         new_board = self.board.clone() 
+        #new_board = Board(cases=copy.deepcopy(self.board.cases), player=self.board.player)
+        #new_board = copy.deepcopy(self.board)
+
         if type=='CASTLE':
             new_board.do_castling_move(action_from, action_to)
         elif type in ['Q', 'R', 'B', 'N']:
@@ -108,9 +111,14 @@ def possible_actions(state):
     """
     if state.all_possible_moves is None:
         state.all_possible_moves = state.board.get_all_possible_moves(state.board.player)
+        state.all_possible_moves.sort(key=lambda m: score_move(m, state.board), reverse=True)
     return state.all_possible_moves
     
-
+def score_move(move, board):
+    _, to_pos, _ = move
+    captured = board.get_piece_at(to_pos)
+    return captured.value
+    
 def is_terminal(state):
     """
     Checks if the game has ended (win or stalemate).
@@ -124,37 +132,25 @@ def is_terminal(state):
     
 
 def utility(state):
-    """
-    Returns 1000 if MAX wins, -1000 if MIN wins, 0 otherwise.
-    """
+    #Returns the utility value of the state: +1000 if MAX wins, -1000 if MIN wins, 0 otherwise.
+    
     b = state.board
-
     if state.all_possible_moves is None:
         state.all_possible_moves = possible_actions(state)
-    
-    if state.isMaxStarting:
-        if b.is_checkmate('WHITE', state.all_possible_moves):
-            return -1000
-        if b.is_checkmate('BLACK', state.all_possible_moves):
-            return 1000 
-    else:
-        if b.is_checkmate('WHITE', state.all_possible_moves):
-            return 1000 
-        if b.is_checkmate('BLACK', state.all_possible_moves):
-            return -1000 
 
-    return 0
+    moves = state.all_possible_moves
+    current_player = b.player  
+
+    if b.is_checkmate(moves, current_player):
+        if state.isMaxStarting:
+            return -1000 if current_player == 'WHITE' else 1000
+        else:
+            return 1000 if current_player == 'WHITE' else -1000
+
+    return 0 
 
 
 def heuristic(state):
-    """
-    h(s) = 
-    0.6 Points for Piece values (Q=9, R=5, B=3, N=3, P=1)
-    0.2 Points for Control of the center (d4, d5, e4, e5)
-    0.2 Points for Mobility (number of legal moves)
-    
-    """
-                
     b = state.board
     WhiteScore=0
     BlackScore=0
@@ -166,29 +162,28 @@ def heuristic(state):
             WhiteScore+=piece.value
         else:
             BlackScore+=piece.value
-            
-    if state.isMaxStarting:
-        PiecesValue = (WhiteScore-BlackScore + 39)*0.0076
-        moves = b.get_all_possible_moves('WHITE', DontCheck=True)
-    else:
-        PiecesValue = (BlackScore-WhiteScore + 39)*0.0076
-        moves = b.get_all_possible_moves('BLACK', DontCheck=True)
     
-    MobilityScore = min(len(moves) / MAX_MOVES, 1.0) * 0.2
+    if state.isMaxStarting:
+        PiecesValue = WhiteScore - BlackScore 
+    else:
+        PiecesValue = BlackScore - WhiteScore 
+    
+    if state.all_possible_moves is None:
+        state.all_possible_moves = b.get_all_possible_moves(b.player)
+    moves = state.all_possible_moves
 
-    d4Control, d5Control, e4Control, e5Control = 0, 0, 0, 0
+    MobilityScore = len(moves) / MAX_MOVES
+
+    d4, d5, e4, e5 = 0, 0, 0, 0
     for move in moves:
-        if move[0] or move[1]  == 'd4':
-            d4Control = 0.05
-        elif move[0] or move[1]== 'd5':
-            d5Control = 0.05
-        elif move[0] or move[1]== 'e4':
-            e4Control = 0.05
-        elif move[0] or move[1]== 'e5':
-            e5Control = 0.05
-    CenterControlScore = (d4Control + d5Control + e4Control + e5Control)
-    Score = PiecesValue + MobilityScore + CenterControlScore
+        if move[0] or move[1]  == 'd4': d4 = 0.05
+        elif move[0] or move[1]== 'd5': d5 = 0.05
+        elif move[0] or move[1]== 'e4': e4 = 0.05
+        elif move[0] or move[1]== 'e5': e5 = 0.05
+    CenterControlScore = (d4+ d5 + e4 + e5)
 
+    Score = PiecesValue + MobilityScore + CenterControlScore
+    
     return Score
 
 
@@ -198,15 +193,18 @@ def winner_function(state):
     """
     b = state.board
 
+    if state.all_possible_moves is None:
+        state.all_possible_moves = possible_actions(state)
+
     if state.isMaxStarting:
-        if b.is_checkmate('WHITE'):
+        if b.is_checkmate(state.all_possible_moves, 'WHITE'):
             return "MIN" 
-        if b.is_checkmate('BLACK'):
+        if b.is_checkmate(state.all_possible_moves, 'BLACK'):
             return "MAX" 
     else:
-        if b.is_checkmate('WHITE'):
+        if b.is_checkmate(state.all_possible_moves, 'WHITE'):
             return "MAX" 
-        if b.is_checkmate('BLACK'):
+        if b.is_checkmate(state.all_possible_moves, 'BLACK'):
             return "MIN"
         
     return None                      

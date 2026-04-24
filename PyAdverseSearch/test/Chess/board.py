@@ -1,6 +1,6 @@
 # FILE: PyAdverseSearch/test/Chess/board.py
 
-from .piece import Piece 
+from .piece import Piece, tab64, tab120, rook_movements, bishop_movements, knight_movements, queen_movements
 
 coord=[
     'a8','b8','c8','d8','e8','f8','g8','h8',
@@ -92,7 +92,6 @@ class Board:
         if not DontCheck:
             in_check_move=[] 
             for move in all_possible_moves:
-                #new_board = self.clone()
                 action_from, action_to, type = move
                 if type=='CASTLE':
                     self.do_castling_move(action_from, action_to)
@@ -121,34 +120,13 @@ class Board:
         piece = self.cases[coord.index(from_pos)]
         self.cases[coord.index(to_pos)] = piece
         self.cases[coord.index(from_pos)] = Piece(' ','NONE')
-
-    def undo_move(self):
-        if not self.history:
-            print("No moves to undo.")
-            return
-        
-        last_move = self.history.pop()
-        if last_move[8]:  # If it was a castling move
-            from_pos, to_pos, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, rook_from_pos, rook_to_pos, _ = last_move
-            #print(f"Undoing castling move from {from_pos} to {to_pos}")
-            self.cases[coord.index(from_pos)] = self.cases[coord.index(to_pos)]
-            self.cases[coord.index(to_pos)] = Piece(' ','NONE')
-            self.cases[coord.index(rook_from_pos)] = self.cases[coord.index(rook_to_pos)]
-            self.cases[coord.index(rook_to_pos)] = Piece(' ','NONE')
-            self.white_can_castle_56 = white_can_castle_56
-            self.white_can_castle_63 = white_can_castle_63
-            self.black_can_castle_0 = black_can_castle_0
-            self.black_can_castle_7 = black_can_castle_7
-        else:
-            from_pos, to_pos, piece_from, piece_to, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, _ = last_move
-            #print(f"Undoing move from {from_pos} to {to_pos}")
-            self.cases[coord.index(from_pos)] = piece_from
-            self.cases[coord.index(to_pos)] = piece_to
-            self.white_can_castle_56 = white_can_castle_56
-            self.white_can_castle_63 = white_can_castle_63
-            self.black_can_castle_0 = black_can_castle_0
-            self.black_can_castle_7 = black_can_castle_7
-
+        if piece.name == 'K':
+            if from_pos == 'e1':
+                self.white_can_castle_56=False
+                self.white_can_castle_63=False
+            elif from_pos == 'e8':
+                self.black_can_castle_0=False
+                self.black_can_castle_7=False
 
     def do_pawn_promotion(self, from_pos, to_pos, promotion_piece):
         """
@@ -204,6 +182,34 @@ class Board:
             self.black_can_castle_0=False
             self.black_can_castle_7=False
 
+    
+    def undo_move(self):
+        if not self.history:
+            print("No moves to undo.")
+            return
+        
+        last_move = self.history.pop()
+        if last_move[8]:  # If it was a castling move
+            from_pos, to_pos, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, rook_from_pos, rook_to_pos, _ = last_move
+            #print(f"Undoing castling move from {from_pos} to {to_pos}")
+            self.cases[coord.index(from_pos)] = self.cases[coord.index(to_pos)]
+            self.cases[coord.index(to_pos)] = Piece(' ','NONE')
+            self.cases[coord.index(rook_from_pos)] = self.cases[coord.index(rook_to_pos)]
+            self.cases[coord.index(rook_to_pos)] = Piece(' ','NONE')
+            self.white_can_castle_56 = white_can_castle_56
+            self.white_can_castle_63 = white_can_castle_63
+            self.black_can_castle_0 = black_can_castle_0
+            self.black_can_castle_7 = black_can_castle_7
+        else:
+            from_pos, to_pos, piece_from, piece_to, white_can_castle_56, white_can_castle_63, black_can_castle_0, black_can_castle_7, _ = last_move
+            #print(f"Undoing move from {from_pos} to {to_pos}")
+            self.cases[coord.index(from_pos)] = piece_from
+            self.cases[coord.index(to_pos)] = piece_to
+            self.white_can_castle_56 = white_can_castle_56
+            self.white_can_castle_63 = white_can_castle_63
+            self.black_can_castle_0 = black_can_castle_0
+            self.black_can_castle_7 = black_can_castle_7
+
 
     def get_piece_at(self, position):
         return self.cases[coord.index(position)]
@@ -220,15 +226,75 @@ class Board:
     
 
     def is_in_check(self, color):
-        all_moves = self.get_all_possible_moves('BLACK' if color == 'WHITE' else 'WHITE', DontCheck=True)
 
-        for piece in self.cases:
+        # 1. Trouver l'index du roi
+        king_index = None
+        for i, piece in enumerate(self.cases):
             if piece.name == 'K' and piece.color == color:
-                king_position = coord[self.cases.index(piece)]
-                for move in all_moves:
-                    if move[1] == king_position:
+                king_index = i
+                break
+        if king_index is None:
+            return False
+
+        opponent = 'BLACK' if color == 'WHITE' else 'WHITE'
+        king_tab120 = tab64[king_index]
+
+        # 2. Attaque par tour ou dame (lignes droites)
+        for direction in rook_movements:
+            j = 1
+            while True:
+                target = tab120[king_tab120 + direction * j]
+                if target == -1:
+                    break
+                piece = self.cases[target]
+                if piece.name != ' ':
+                    if piece.color == opponent and piece.name in ('R', 'Q'):
                         return True
-                    
+                    break  # bloqué par une autre pièce
+                j += 1
+
+        # 3. Attaque par fou ou dame (diagonales)
+        for direction in bishop_movements:
+            j = 1
+            while True:
+                target = tab120[king_tab120 + direction * j]
+                if target == -1:
+                    break
+                piece = self.cases[target]
+                if piece.name != ' ':
+                    if piece.color == opponent and piece.name in ('B', 'Q'):
+                        return True
+                    break
+                j += 1
+
+        # 4. Attaque par cavalier
+        for direction in knight_movements:
+            target = tab120[king_tab120 + direction]
+            if target != -1:
+                piece = self.cases[target]
+                if piece.color == opponent and piece.name == 'N':
+                    return True
+
+        # 5. Attaque par pion
+        if color == 'WHITE':
+            pawn_attacks = [-9, -11]  # pions noirs attaquent vers le bas
+        else:
+            pawn_attacks = [9, 11]    # pions blancs attaquent vers le haut
+        for direction in pawn_attacks:
+            target = tab120[king_tab120 + direction]
+            if target != -1:
+                piece = self.cases[target]
+                if piece.color == opponent and piece.name == 'P':
+                    return True
+
+        # 6. Attaque par roi adverse (évite les rois adjacents illégaux)
+        for direction in queen_movements:
+            target = tab120[king_tab120 + direction]
+            if target != -1:
+                piece = self.cases[target]
+                if piece.color == opponent and piece.name == 'K':
+                    return True
+
         return False
     
 
@@ -245,12 +311,18 @@ class Board:
         if is_castling:
             if from_pos == 'e1' and to_pos == 'c1':
                 move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'a1', 'd1', True]
+                self.history.append(move)
             elif from_pos == 'e1' and to_pos == 'g1':
                 move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'h1', 'f1', True]
+                self.history.append(move)
             elif from_pos == 'e8' and to_pos == 'c8':
                 move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'a8', 'd8', True]
+                self.history.append(move)
             elif from_pos == 'e8' and to_pos == 'g8':
                 move = [from_pos, to_pos, self.white_can_castle_56, self.white_can_castle_63, self.black_can_castle_0, self.black_can_castle_7, 'h8', 'f8', True]
+                self.history.append(move)
+            else:
+                print("Invalid castling move for logging.")
         else:
             piece_from = self.get_piece_at(from_pos)
             piece_to = self.get_piece_at(to_pos)
