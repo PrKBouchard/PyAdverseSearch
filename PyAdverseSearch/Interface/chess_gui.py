@@ -1,3 +1,4 @@
+import time
 import tkinter as tk
 from tkinter import ttk
 
@@ -47,8 +48,8 @@ class ChessGUI:
         self.state = None
         self.from_pos = None
         self.to_pos = None
-
-        
+        self.frameMenu = tk.Frame(self.root, bg=BG_ORANGE)
+        self.algorithm = None
 
 
     def show_menu(self):
@@ -59,10 +60,16 @@ class ChessGUI:
         self.root.geometry("700x700")
         self.root.configure(bg=BG_ORANGE)
 
-         
-        title = tk.Label(self.root, text="CHESS", font=TITLE_FONT, bg=BG_ORANGE, fg="white").grid(row=0, column=1, padx=20, pady=(80,10))
+        self.frameMenu = tk.Frame(self.root, bg=BG_ORANGE)
+        self.frameMenu.grid(column=1, row=1)
 
-        frame = tk.Frame(self.root, bg=BG_BEIGE, highlightbackground=LIGHT_SQUARE, highlightthickness=3)
+        self.frameMenu.columnconfigure(0, weight=1)
+        self.frameMenu.columnconfigure(1, weight=1)
+        self.frameMenu.columnconfigure(2, weight=1)
+
+        title = tk.Label(self.frameMenu, text="CHESS", font=TITLE_FONT, bg=BG_ORANGE, fg="white").grid(row=0, column=1, padx=20, pady=(80,10))
+
+        frame = tk.Frame(self.frameMenu, bg=BG_BEIGE, highlightbackground=LIGHT_SQUARE, highlightthickness=3)
         frame.grid(row=2, column=1, padx=20, pady=20)
 
         color = tk.StringVar()
@@ -97,29 +104,26 @@ class ChessGUI:
     def start_game(self, color, algo, level):
         #print("Selected Color:"+ color +", Algorithm:" + algo +", Level: "+ level)
         
-        """self.canvas = tk.Canvas(
-            root, width=self.board_size * self.cell_size, height=self.board_size * self.cell_size
-        )
-        self.canvas.bind("<Button-1>", self.on_click)
-        self.canvas.pack(padx=20, pady=20)"""
-
         player_color = color.upper()
-        maxStarting = True if color == 'white' else False
+        maxStarting = True if color == 'black' else False
         depth = int(level.split('(')[1].split(')')[0].split()[1])
         
         game = generate_chess_game(maxStarting)
         self.state = game.state
         if algo == "Alpha-Beta":
-            algorithm = AlphaBeta(game=game, max_depth=depth)
+            self.algorithm = AlphaBeta(game=game, max_depth=depth)
         elif algo == "Minimax":
-            algorithm = Minimax(game=game, max_depth=depth)
+            self.algorithm = Minimax(game=game, max_depth=depth)
         else:
-            algorithm = MonteCarlo(game=game, max_iterations=depth*200)  # Adjust iterations based on depth
+            self.algorithm = MonteCarlo(game=game, max_iterations=depth*200)  # Adjust iterations based on depth
 
         self.draw_board()
 
+        if maxStarting:
+            self.ai_move()
+
     def draw_board(self):
-        for widget in self.root.winfo_children():
+        for widget in self.frameMenu.winfo_children():
             widget.destroy()
         root.rowconfigure(0, weight=1)
         root.rowconfigure(1, weight=1)
@@ -164,8 +168,23 @@ class ChessGUI:
             user_state = self.state.user_move(user_input)
             self.state = user_state
             self.draw_board()
+            root.update() 
+            self.ai_move()
         except ValueError as error:
             print(str(error))
+
+    def ai_move(self):
+        start = time.time()
+        best_state = self.algorithm.choose_best_move(self.state)
+        end = time.time()
+        print(f"AI played in {end - start:.3f} seconds.")
+
+        if best_state is None:
+            print("No move found (final state or a mistake...).")
+            return
+        
+        self.state = best_state
+        self.draw_board()
 
 
 def center(win):
